@@ -30,9 +30,9 @@ When Git is connected to Vercel, pushes to the production branch deploy the live
 
 Keep private files and credentials out of Git and Vercel deployments. `Profile.pdf` is intentionally excluded; only the résumé linked from the site is published.
 
-## Original artwork
+## Portfolio visuals
 
-The landing page's signal illustration, the portfolio hero's scatterplot and signal map, and project-card artwork are original schematic visual metaphors, not project screenshots, data, or performance claims. They're served locally as SVGs; no stock-image service is required. The work cards link to the available project demos and repositories; links that are not available are identified rather than guessed.
+The landing page's signal illustration and project-card artwork are original schematic visuals, not project screenshots, data, or performance claims. They're served locally as SVGs; no stock-image service is required. The portfolio hero timeline uses dated milestones from the résumé and project information. The work cards link to the available project demos, repositories, and case studies; links that are not available are identified rather than guessed.
 
 ## Optional contact API
 
@@ -53,12 +53,15 @@ npm run build
 
 - `public/index.html` — first-page introduction and link into the complete portfolio
 - `public/portfolio.html` — full portfolio sections, metadata, and direct contact/profile links
+- `public/case-studies/` — project case studies for Kairon, Janus, and Hive
 - `public/landing.css` — introductory page layout and restrained animated artwork
 - `public/styles.css` — responsive visual system and mobile layouts
 - `public/assets/*.svg` — original logo and abstract hero/project illustrations
 - `public/script.js` — navigation, project filters, and reveal effects
 - `api/contact.js` — optional Vercel function for direct API contact submissions
 - `tests/contact.test.js` — API validation and storage behavior tests
+- `tests/case-studies.test.js` — case-study route and content-security-policy checks
+- `tests/deployment.test.js` — public-output and ignore-file checks
 - `dev-server.js` — dependency-free local preview server
 - `supabase/schema.sql` — database schema and access controls
 - `public/JAL_PATEL_RESUME.pdf` — downloadable résumé
