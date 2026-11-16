@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+# TODO: Add a Sitemap directive after the public portfolio domain is chosen.

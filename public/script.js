@@ -173,6 +173,44 @@
     });
   }
 
+  const copyEmailButton = document.getElementById('copy-email');
+  const copyEmailStatus = document.getElementById('copy-email-status');
+
+  if (copyEmailButton && copyEmailStatus) {
+    copyEmailButton.addEventListener('click', async function () {
+      const email = copyEmailButton.dataset.email;
+      if (!email) {
+        copyEmailStatus.textContent = 'Email address is unavailable. Use the email link above.';
+        return;
+      }
+
+      try {
+        if (window.isSecureContext && navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(email);
+        } else {
+          const helper = document.createElement('textarea');
+          helper.className = 'clipboard-helper';
+          helper.value = email;
+          helper.setAttribute('readonly', '');
+          document.body.appendChild(helper);
+          helper.select();
+          let copied;
+          try {
+            copied = document.execCommand('copy');
+          } finally {
+            helper.remove();
+            copyEmailButton.focus();
+          }
+          if (!copied) throw new Error('The browser did not allow clipboard access.');
+        }
+        copyEmailStatus.textContent = 'Email address copied.';
+      } catch (error) {
+        copyEmailStatus.textContent = 'Copy failed. Use the email link above: ' + email;
+        console.error('Unable to copy the contact email:', error);
+      }
+    });
+  }
+
   const revealItems = document.querySelectorAll(
     '.section-heading, .proof-item, .project-card, .about-intro, .about-copy, .about-facts > div, .expertise-card, .experience-item, .credential-card, .profile-card, .hero__side-note'
   );

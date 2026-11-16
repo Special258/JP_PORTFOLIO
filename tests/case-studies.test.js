@@ -98,4 +98,17 @@ test('case study and Signal Lab routes are allowlisted and keep the self-only sc
 
   const missingDataResponse = await getPage(port, '/data/prices.json');
   assert.equal(missingDataResponse.statusCode, 404, 'missing owner-supplied prices should have an explicit not-found response');
+
+  const supportFiles = [
+    ['/robots.txt', /text\/plain/, /TODO: Add a Sitemap directive/],
+    ['/sitemap.xml', /application\/xml/, /TODO: Add absolute URLs/],
+    ['/assets/og-card.png', /image\/png/, null]
+  ];
+
+  for (const route of supportFiles) {
+    const response = await getPage(port, route[0]);
+    assert.equal(response.statusCode, 200, `${route[0]} should be served`);
+    assert.match(response.headers['content-type'], route[1]);
+    if (route[2]) assert.match(response.body, route[2]);
+  }
 });

@@ -27,13 +27,18 @@ When Git is connected to Vercel, pushes to the production branch deploy the live
 - Update presentation in `public/styles.css` (portfolio page) or `public/landing.css` (introduction page). Update `public/script.js` only when interaction behavior needs to change.
 - Replace `public/JAL_PATEL_RESUME.pdf` with the updated résumé using the same filename so the existing links continue to work.
 - Signal Lab intentionally starts without prices. To add your own data, export a CSV with `date,ticker,close` columns and exactly three ticker symbols, then run `node tools/csv-to-prices.js path/to/export.csv`. The script writes `public/data/prices.json`, which is loaded locally by the browser. `public/data/prices.example.json` is a labelled placeholder and is never used as market data.
+- The Signal Lab appears after Toolkit and is an educational display of historical data, not a forecasting tool or financial advice.
 - Run `npm run build` and preview with `npm run dev`. Push the change to a branch and inspect its Vercel preview before merging it into the production branch.
 
 Keep private files and credentials out of Git and Vercel deployments. `Profile.pdf` is intentionally excluded; only the résumé linked from the site is published.
 
 ## Portfolio visuals
 
-The landing page's signal illustration and project-card artwork are original schematic visuals, not project screenshots, data, or performance claims. They're served locally as SVGs; no stock-image service is required. The portfolio hero timeline uses dated milestones from the résumé and project information. The work cards link to the available project demos, repositories, and case studies; links that are not available are identified rather than guessed.
+The landing page's signal illustration and project-card artwork are original schematic visuals, not project screenshots, data, or performance claims. They're served locally as SVGs; no stock-image service is required. The compact milestone timeline follows the proof strip and lists dated milestones from the résumé and project information. The work cards link to the available project demos, repositories, and case studies; links that are not available are identified rather than guessed.
+
+The share-card artwork at `public/assets/og-card.png` is a visual placeholder; replace it with a final 1200×630 branded image. Canonical and `og:url` metadata, plus absolute sitemap URLs, are intentionally marked TODO until the public domain is selected.
+
+The HackerRank credential is conservatively labelled “Python (Basic) and Problem Solving (Intermediate): verified”; TODO: confirm whether a higher badge should be shown. The Kairon and Janus Architecture links use README heading anchors checked against their current GitHub READMEs.
 
 ## Optional contact API
 

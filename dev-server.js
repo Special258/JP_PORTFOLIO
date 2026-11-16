@@ -25,13 +25,16 @@ const publicFiles = new Map([
   ['/signal-lab.js', ['signal-lab.js', 'application/javascript; charset=utf-8']],
   ['/data/prices.json', ['data/prices.json', 'application/json; charset=utf-8']],
   ['/data/prices.example.json', ['data/prices.example.json', 'application/json; charset=utf-8']],
+  ['/robots.txt', ['robots.txt', 'text/plain; charset=utf-8']],
+  ['/sitemap.xml', ['sitemap.xml', 'application/xml; charset=utf-8']],
   ['/JAL_PATEL_RESUME.pdf', ['JAL_PATEL_RESUME.pdf', 'application/pdf']],
   ['/assets/hero-signal-map.svg', ['assets/hero-signal-map.svg', 'image/svg+xml; charset=utf-8']],
   ['/assets/landing-ai-mesh.svg', ['assets/landing-ai-mesh.svg', 'image/svg+xml; charset=utf-8']],
   ['/assets/jp-mark.svg', ['assets/jp-mark.svg', 'image/svg+xml; charset=utf-8']],
   ['/assets/project-hive.svg', ['assets/project-hive.svg', 'image/svg+xml; charset=utf-8']],
   ['/assets/project-janus.svg', ['assets/project-janus.svg', 'image/svg+xml; charset=utf-8']],
-  ['/assets/project-kairon.svg', ['assets/project-kairon.svg', 'image/svg+xml; charset=utf-8']]
+  ['/assets/project-kairon.svg', ['assets/project-kairon.svg', 'image/svg+xml; charset=utf-8']],
+  ['/assets/og-card.png', ['assets/og-card.png', 'image/png']]
 ]);
 
 function sendJson(res, statusCode, body) {
