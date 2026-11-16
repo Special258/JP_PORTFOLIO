@@ -11,7 +11,7 @@
   <title>Jal Patel — Patterns to Prototypes</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/svg+xml" href="assets/jp-mark.svg">
 </head>
@@ -19,7 +19,7 @@
   <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <aside class="page-rail page-rail--left" aria-label="Portfolio section navigation">
+  <div class="page-rail page-rail--left" aria-hidden="true" inert>
     <span class="page-rail__eyebrow">JAL / INDEX</span>
     <nav class="page-rail__nav" aria-label="Jump to a section">
       <a class="page-rail__link" href="#top" aria-label="01, Introduction" aria-current="location"><span>01</span><i aria-hidden="true"></i></a>
@@ -32,9 +32,9 @@
       <a class="page-rail__link" href="#contact" aria-label="08, Contact"><span>08</span><i aria-hidden="true"></i></a>
     </nav>
     <span class="page-rail__footer">SCROLL TO EXPLORE</span>
-  </aside>
+  </div>
 
-  <aside class="page-rail page-rail--right" aria-label="Current portfolio section">
+  <div class="page-rail page-rail--right" aria-hidden="true" inert>
     <span class="page-rail__eyebrow">IN THIS SECTION</span>
     <span class="page-rail__counter"><span id="page-rail-index">01</span><span>/ 08</span></span>
     <svg class="page-rail__signal" viewBox="0 0 84 54" aria-hidden="true" focusable="false">
@@ -45,7 +45,7 @@
     </svg>
     <strong class="page-rail__title" id="page-rail-title">Introduction</strong>
     <span class="page-rail__note" id="page-rail-note">Start with a useful question.</span>
-  </aside>
+  </div>
 
   <header class="site-header" id="top">
     <nav class="nav container" aria-label="Main navigation">
@@ -62,8 +62,8 @@
         <a class="nav__link" href="index.html">Intro</a>
         <a class="nav__link" href="#work">Work</a>
         <a class="nav__link" href="#about">Approach</a>
-        <a class="nav__link" href="#experience">Experience</a>
         <a class="nav__link" href="#stack">Toolkit</a>
+        <a class="nav__link" href="#experience">Experience</a>
         <a class="nav__link" href="#credentials">Credentials</a>
         <a class="nav__link" href="#profiles">Elsewhere</a>
         <a class="nav__contact" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=jalpatel798%40gmail.com" target="_blank" rel="noopener noreferrer">Email me <span aria-hidden="true">↗</span></a>
@@ -81,12 +81,6 @@
           <a class="button button--dark" href="#work">Explore my work <span aria-hidden="true">↘</span></a>
           <a class="text-link" href="JAL_PATEL_RESUME.pdf" target="_blank" rel="noopener">View résumé <span aria-hidden="true">↗</span></a>
         </div>
-        <div class="hero__meta">
-          <span>ASK</span><span class="meta-separator">/</span>
-          <span>EXPLORE</span><span class="meta-separator">/</span>
-          <span>MAKE</span><span class="meta-separator">/</span>
-          <span>ITERATE</span>
-        </div>
         <nav class="hero__socials" aria-label="Professional and coding profiles">
           <a href="https://github.com/Special258" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
           <a href="https://www.linkedin.com/in/jalpatel-dataai" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
@@ -94,55 +88,6 @@
           <a href="https://www.hackerrank.com/profile/jalpatel478" target="_blank" rel="noopener noreferrer">HackerRank <span aria-hidden="true">↗</span></a>
         </nav>
       </div>
-
-      <svg class="hero__abstract" viewBox="0 0 1440 680" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
-        <path class="hero__frame-line" d="M28 66V28m1164 0h104v38M28 614v38h116m1164 0h104v-38"/>
-        <path class="hero__frame-ticks" d="M720 28v14M28 340h14m1356 0h14M720 638v14"/>
-        <ellipse class="hero__abstract-ring hero__abstract-ring--outer" cx="720" cy="340" rx="520" ry="265"/>
-        <ellipse class="hero__abstract-ring hero__abstract-ring--middle" cx="720" cy="340" rx="404" ry="206"/>
-        <ellipse class="hero__abstract-ring hero__abstract-ring--inner" cx="720" cy="340" rx="285" ry="145"/>
-        <path class="hero__abstract-route" d="M75 484C286 484 272 182 496 182s196 317 405 317 208-274 463-274"/>
-        <path class="hero__abstract-route hero__abstract-route--violet" d="M102 524c181 0 211-249 391-249s230 228 412 228 248-211 428-211"/>
-        <circle class="hero__abstract-node" cx="496" cy="182" r="7"/>
-        <circle class="hero__abstract-node hero__abstract-node--gold" cx="901" cy="499" r="6"/>
-        <circle class="hero__abstract-node hero__abstract-node--violet" cx="1134" cy="257" r="8"/>
-        <path class="hero__abstract-cross" d="M282 329h20m-10-10v20m851-125h18m-9-9v18"/>
-      </svg>
-      <span class="hero__frame-label hero__frame-label--top" aria-hidden="true">JP / DATA &amp; APPLIED AI</span>
-      <span class="hero__frame-label hero__frame-label--bottom" aria-hidden="true">FRAME · EXPLORE · EXPLAIN</span>
-      <aside class="hero__margin-note hero__margin-note--left" aria-label="Portfolio principle: ask better questions">
-        <span class="hero__margin-index">01</span>
-        <span class="hero__margin-rule" aria-hidden="true"></span>
-        <span class="hero__margin-label">ASK BETTER QUESTIONS</span>
-      </aside>
-      <aside class="hero__margin-note hero__margin-note--right" aria-label="Portfolio principle: make insights useful">
-        <span class="hero__margin-index">02</span>
-        <span class="hero__margin-rule" aria-hidden="true"></span>
-        <span class="hero__margin-label">MAKE INSIGHTS USEFUL</span>
-      </aside>
-
-      <aside class="hero__side-note hero__side-note--left" aria-label="Portfolio focus: problem framing">
-        <span>01 / FRAME</span>
-        <p>Start with the<br>decision that matters.</p>
-      </aside>
-      <aside class="hero__side-note hero__side-note--right" aria-label="Portfolio focus: evidence">
-        <span>02 / QUESTION</span>
-        <p>What does the<br>evidence support?</p>
-      </aside>
-
-      <svg class="hero__signal-art" viewBox="0 0 1440 420" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-        <path class="signal-path signal-path--lime" d="M0 126C91 126 96 179 166 179S250 230 334 230"/>
-        <path class="signal-path signal-path--violet" d="M0 153C82 153 111 199 172 199S254 254 334 254"/>
-        <path class="signal-path signal-path--lime" d="M1440 126C1349 126 1344 179 1274 179S1190 230 1106 230"/>
-        <path class="signal-path signal-path--violet" d="M1440 153C1358 153 1329 199 1268 199S1186 254 1106 254"/>
-        <circle class="signal-point signal-point--outer" cx="8" cy="126" r="3"/>
-        <circle class="signal-point signal-point--inner" cx="334" cy="230" r="4"/>
-        <circle class="signal-point signal-point--inner" cx="334" cy="254" r="2"/>
-        <circle class="signal-point signal-point--outer" cx="1432" cy="126" r="3"/>
-        <circle class="signal-point signal-point--inner" cx="1106" cy="230" r="4"/>
-        <circle class="signal-point signal-point--inner" cx="1106" cy="254" r="2"/>
-        <path class="signal-tick" d="M166 171v16m1100-16v16"/>
-      </svg>
 
       <div class="hero-visuals">
         <div class="hero-art" aria-label="Schematic illustration of an analytical process">
@@ -179,42 +124,6 @@
           <div class="hero-art__note"><span class="hero-art__note-mark">?</span><span>Stay curious.<br>Check the evidence.</span></div>
         </div>
 
-        <section class="method-card" aria-labelledby="method-title">
-          <div class="method-card__top">
-            <span class="method-card__label">FIELD NOTE 02 / MY APPROACH</span>
-            <span class="method-card__index">01 → 05 / PROCESS</span>
-          </div>
-          <h2 class="method-card__title" id="method-title">From question <span>to useful insight.</span></h2>
-          <p class="method-card__description">A practical workflow shaped by my experience with Python, SQL, exploratory analysis, and model evaluation.</p>
-          <svg class="method-graph" viewBox="0 0 500 120" role="img" aria-labelledby="method-graph-title method-graph-description">
-            <title id="method-graph-title">My data problem-solving workflow</title>
-            <desc id="method-graph-description">A schematic, non-quantitative path connecting five stages: frame, prepare, explore, evaluate, and explain.</desc>
-            <path class="method-graph__grid" d="M35 18V94M142 18V94M250 18V94M358 18V94M465 18V94"/>
-            <path class="method-graph__route" d="M35 52H465"/>
-            <circle class="method-graph__node" cx="35" cy="52" r="12"/>
-            <circle class="method-graph__node method-graph__node--accent" cx="142" cy="52" r="12"/>
-            <circle class="method-graph__node" cx="250" cy="52" r="12"/>
-            <circle class="method-graph__node method-graph__node--accent" cx="358" cy="52" r="12"/>
-            <circle class="method-graph__node" cx="465" cy="52" r="12"/>
-            <text class="method-graph__number" x="35" y="56">01</text>
-            <text class="method-graph__number" x="142" y="56">02</text>
-            <text class="method-graph__number" x="250" y="56">03</text>
-            <text class="method-graph__number" x="358" y="56">04</text>
-            <text class="method-graph__number" x="465" y="56">05</text>
-            <text class="method-graph__caption" x="35" y="106">QUESTION</text>
-            <text class="method-graph__caption" x="465" y="106" text-anchor="end">DECISION</text>
-          </svg>
-          <ol class="method-stages">
-            <li><span>01 / FRAME</span><strong>Define the decision</strong></li>
-            <li><span>02 / PREPARE</span><strong>Clean &amp; shape data</strong></li>
-            <li><span>03 / EXPLORE</span><strong>Python · SQL · EDA</strong></li>
-            <li><span>04 / EVALUATE</span><strong>Test the evidence</strong></li>
-            <li><span>05 / EXPLAIN</span><strong>Share the takeaway</strong></li>
-          </ol>
-          <div class="method-card__footer">
-            <span>FRAME</span><span>→</span><span>PREPARE</span><span>→</span><span>EXPLORE</span><span>→</span><span>EVALUATE</span><span>→</span><span>EXPLAIN</span>
-          </div>
-        </div>
       </div>
       <a class="hero__scroll" href="#work"><span>SCROLL TO EXPLORE</span><span aria-hidden="true">↓</span></a>
     </section>
@@ -227,14 +136,6 @@
         <div class="proof-item"><strong>01</strong><span>Project in development</span></div>
       </div>
     </section>
-
-    <div class="section-bridge section-bridge--lime" aria-label="Proof, put to work.">
-      <svg viewBox="0 0 1200 72" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-        <path d="M0 36 H190 L210 24 H430 L450 36 H750 L770 48 H990 L1010 36 H1200"/>
-        <circle cx="90" cy="36" r="4"/><circle cx="600" cy="36" r="5"/><circle cx="1110" cy="36" r="4"/>
-      </svg>
-      <div class="section-bridge__inner"><div class="section-bridge__rail"><span>01 / NEXT</span><b aria-hidden="true">››</b></div><p class="section-bridge__next"><span>UP NEXT</span><strong>Proof, put to work.</strong></p></div>
-    </div>
 
     <section class="section work-section" id="work" aria-labelledby="work-title">
       <div class="container">
@@ -321,14 +222,6 @@
       </div>
     </section>
 
-    <div class="section-bridge section-bridge--violet" aria-label="Build with people in view.">
-      <svg viewBox="0 0 1200 72" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-        <path d="M0 36 H190 L210 24 H430 L450 36 H750 L770 48 H990 L1010 36 H1200"/>
-        <circle cx="90" cy="36" r="4"/><circle cx="600" cy="36" r="5"/><circle cx="1110" cy="36" r="4"/>
-      </svg>
-      <div class="section-bridge__inner"><div class="section-bridge__rail"><span>02 / NEXT</span><b aria-hidden="true">››</b></div><p class="section-bridge__next"><span>UP NEXT</span><strong>Build with people in view.</strong></p></div>
-    </div>
-
     <section class="about-section" id="about" aria-labelledby="about-title">
       <div class="container about-layout">
         <div class="about-intro">
@@ -354,14 +247,6 @@
       </div>
     </section>
 
-    <div class="section-bridge section-bridge--lime" aria-label="A practical toolkit, applied with purpose.">
-      <svg viewBox="0 0 1200 72" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-        <path d="M0 36 H190 L210 24 H430 L450 36 H750 L770 48 H990 L1010 36 H1200"/>
-        <circle cx="90" cy="36" r="4"/><circle cx="600" cy="36" r="5"/><circle cx="1110" cy="36" r="4"/>
-      </svg>
-      <div class="section-bridge__inner"><div class="section-bridge__rail"><span>03 / NEXT</span><b aria-hidden="true">››</b></div><p class="section-bridge__next"><span>UP NEXT</span><strong>A practical toolkit.</strong></p></div>
-    </div>
-
     <section class="section expertise-section" id="stack" aria-labelledby="expertise-title">
       <div class="container">
         <div class="section-heading section-heading--compact">
@@ -370,19 +255,19 @@
         </div>
         <div class="expertise-grid">
           <article class="expertise-card">
-            <div class="expertise-card__top"><span class="expertise-card__number">01</span><span class="expertise-card__mark" aria-hidden="true">&lt;/&gt;</span></div>
+            <div class="expertise-card__top"><span class="expertise-card__mark" aria-hidden="true">&lt;/&gt;</span></div>
             <h3>Applied AI &amp; Modeling</h3>
             <p>Exploring models and AI workflows with an eye on how they work, what they miss, and where they help.</p>
             <div class="expertise-card__skills"><span>Explainable ML</span><span>Feature engineering</span><span>Statistical modeling</span><span>OpenAI</span><span>AI agents</span><span>n8n</span></div>
           </article>
           <article class="expertise-card">
-            <div class="expertise-card__top"><span class="expertise-card__number">02</span><span class="expertise-card__mark" aria-hidden="true">↗</span></div>
+            <div class="expertise-card__top"><span class="expertise-card__mark" aria-hidden="true">↗</span></div>
             <h3>Data &amp; Analytics</h3>
             <p>Turning raw data into reliable reporting, clear visualizations, and decision-ready insights.</p>
             <div class="expertise-card__skills"><span>Python</span><span>SQL</span><span>Pandas</span><span>NumPy</span><span>EDA</span><span>Power BI</span><span>Data pipelines</span></div>
           </article>
           <article class="expertise-card">
-            <div class="expertise-card__top"><span class="expertise-card__number">03</span><span class="expertise-card__mark" aria-hidden="true">✳</span></div>
+            <div class="expertise-card__top"><span class="expertise-card__mark" aria-hidden="true">✳</span></div>
             <h3>Product &amp; Engineering</h3>
             <p>Connecting model-backed services to responsive interfaces and cloud-ready applications.</p>
             <div class="expertise-card__skills"><span>FastAPI</span><span>React</span><span>TypeScript</span><span>AWS</span><span>REST APIs</span><span>Supabase</span></div>
@@ -390,14 +275,6 @@
         </div>
       </div>
     </section>
-
-    <div class="section-bridge section-bridge--violet" aria-label="Tools applied to real problems.">
-      <svg viewBox="0 0 1200 72" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-        <path d="M0 36 H190 L210 24 H430 L450 36 H750 L770 48 H990 L1010 36 H1200"/>
-        <circle cx="90" cy="36" r="4"/><circle cx="600" cy="36" r="5"/><circle cx="1110" cy="36" r="4"/>
-      </svg>
-      <div class="section-bridge__inner"><div class="section-bridge__rail"><span>04 / NEXT</span><b aria-hidden="true">››</b></div><p class="section-bridge__next"><span>UP NEXT</span><strong>Learning by doing.</strong></p></div>
-    </div>
 
     <section class="experience-section" id="experience" aria-labelledby="experience-title">
       <div class="container experience-layout">
@@ -426,14 +303,6 @@
       </div>
     </section>
 
-    <div class="section-bridge section-bridge--coral" aria-label="Experience, backed by evidence.">
-      <svg viewBox="0 0 1200 72" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-        <path d="M0 36 H190 L210 24 H430 L450 36 H750 L770 48 H990 L1010 36 H1200"/>
-        <circle cx="90" cy="36" r="4"/><circle cx="600" cy="36" r="5"/><circle cx="1110" cy="36" r="4"/>
-      </svg>
-      <div class="section-bridge__inner"><div class="section-bridge__rail"><span>05 / NEXT</span><b aria-hidden="true">››</b></div><p class="section-bridge__next"><span>UP NEXT</span><strong>Signals of practice.</strong></p></div>
-    </div>
-
     <section class="section credentials-section" id="credentials" aria-labelledby="credentials-title">
       <div class="container">
         <div class="section-heading section-heading--compact">
@@ -442,25 +311,25 @@
         </div>
         <div class="credentials-grid">
           <article class="credential-card credential-card--ml">
-            <div class="credential-card__top"><span class="credential-card__number">01 / AI &amp; ML</span><span class="credential-card__symbol credential-card__symbol--michigan" aria-hidden="true">U‑M</span></div>
+            <div class="credential-card__top"><span class="credential-card__symbol credential-card__symbol--michigan" aria-hidden="true">U‑M</span></div>
             <p class="credential-card__discipline">Build · evaluate · iterate</p>
             <h3>Applied machine learning</h3>
             <div class="credential-card__source"><span>University of Michigan</span><span>via Coursera</span></div>
           </article>
           <article class="credential-card credential-card--analytics">
-            <div class="credential-card__top"><span class="credential-card__number">02 / DATA</span><span class="credential-card__symbol credential-card__symbol--cisco" aria-hidden="true">CISCO</span></div>
+            <div class="credential-card__top"><span class="credential-card__symbol credential-card__symbol--cisco" aria-hidden="true">CISCO</span></div>
             <p class="credential-card__discipline">From raw data to insight</p>
             <h3>Data analytics</h3>
             <div class="credential-card__source"><span>Cisco Networking Academy</span><span>Data Analytics Essentials</span></div>
           </article>
           <article class="credential-card credential-card--ai">
-            <div class="credential-card__top"><span class="credential-card__number">03 / GENERATIVE AI</span><span class="credential-card__symbol credential-card__symbol--microsoft" aria-hidden="true">MS</span></div>
+            <div class="credential-card__top"><span class="credential-card__symbol credential-card__symbol--microsoft" aria-hidden="true">MS</span></div>
             <p class="credential-card__discipline">Generative AI · responsible use</p>
             <h3>AI with intention</h3>
             <div class="credential-card__source"><span>Microsoft</span><span>Generative AI foundations</span></div>
           </article>
           <article class="credential-card credential-card--python">
-            <div class="credential-card__top"><span class="credential-card__number">04 / SKILL BADGE</span><span class="credential-card__symbol credential-card__symbol--hackerrank" aria-hidden="true">HR</span></div>
+            <div class="credential-card__top"><span class="credential-card__symbol credential-card__symbol--hackerrank" aria-hidden="true">HR</span></div>
             <p class="credential-card__discipline">Problem solving · Python</p>
             <h3>Python (Basic) and Problem Solving (Intermediate): verified</h3>
             <div class="credential-card__source"><span>HackerRank</span><a href="https://www.hackerrank.com/profile/jalpatel478" target="_blank" rel="noopener">View profile ↗</a></div>
@@ -468,14 +337,6 @@
         </div>
       </div>
     </section>
-
-    <div class="section-bridge section-bridge--lime" aria-label="See the work and connect.">
-      <svg viewBox="0 0 1200 72" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-        <path d="M0 36 H190 L210 24 H430 L450 36 H750 L770 48 H990 L1010 36 H1200"/>
-        <circle cx="90" cy="36" r="4"/><circle cx="600" cy="36" r="5"/><circle cx="1110" cy="36" r="4"/>
-      </svg>
-      <div class="section-bridge__inner"><div class="section-bridge__rail"><span>06 / NEXT</span><b aria-hidden="true">››</b></div><p class="section-bridge__next"><span>UP NEXT</span><strong>Find me around the web.</strong></p></div>
-    </div>
 
     <section class="section profiles-section" id="profiles" aria-labelledby="profiles-title">
       <div class="container">
@@ -507,14 +368,6 @@
         </div>
       </div>
     </section>
-
-    <div class="section-bridge section-bridge--violet" aria-label="Reach out directly.">
-      <svg viewBox="0 0 1200 72" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-        <path d="M0 36 H190 L210 24 H430 L450 36 H750 L770 48 H990 L1010 36 H1200"/>
-        <circle cx="90" cy="36" r="4"/><circle cx="600" cy="36" r="5"/><circle cx="1110" cy="36" r="4"/>
-      </svg>
-      <div class="section-bridge__inner"><div class="section-bridge__rail"><span>07 / NEXT</span><b aria-hidden="true">››</b></div><p class="section-bridge__next"><span>UP NEXT</span><strong>Reach me directly.</strong></p></div>
-    </div>
 
     <section class="contact-section" id="contact" aria-labelledby="contact-title">
       <div class="container contact-layout">
