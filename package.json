@@ -1,0 +1,19 @@
+{
+  "name": "jalpatel-portfolio",
+  "version": "1.0.0",
+  "description": "Jal Patel — Patterns to Prototypes Portfolio",
+  "private": true,
+  "scripts": {
+    "dev": "node --env-file-if-exists=.env.local dev-server.js",
+    "build": "node --check api/contact.js && node --check dev-server.js && node --check public/script.js && node --test tests/*.test.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "keywords": [
+    "portfolio",
+    "digital-products",
+    "data-projects",
+    "jal-patel"
+  ],
+  "author": "Jal Patel <jalpatel798@gmail.com>",
+  "license": "MIT"
+}

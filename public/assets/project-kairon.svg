@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" fill="none">
+  <defs>
+    <linearGradient id="field" x1="60" y1="42" x2="850" y2="422" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#242338"/>
+      <stop offset=".55" stop-color="#342E56"/>
+      <stop offset="1" stop-color="#292A3B"/>
+    </linearGradient>
+    <radialGradient id="risk" cx="0" cy="0" r="1" gradientTransform="matrix(0 230 -290 0 665 210)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF684A" stop-opacity=".34"/>
+      <stop offset="1" stop-color="#FF684A" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0v40" stroke="#F4F0E7" stroke-opacity=".08"/>
+    </pattern>
+  </defs>
+  <path fill="url(#field)" d="M0 0h900v440H0z"/>
+  <path fill="url(#risk)" d="M0 0h900v440H0z"/>
+  <path fill="url(#grid)" d="M0 0h900v440H0z"/>
+  <path d="M78 320c105-20 142-18 210-78 78-69 133-145 216-126 77 17 95 120 159 131 54 9 103-38 159-112" stroke="#D9FF72" stroke-opacity=".78" stroke-width="3"/>
+  <path d="M78 320c105-20 142-18 210-78 78-69 133-145 216-126 77 17 95 120 159 131 54 9 103-38 159-112v190H78z" fill="#D9FF72" fill-opacity=".08"/>
+  <path d="M81 352h728M81 110v242" stroke="#F4F0E7" stroke-opacity=".38"/>
+  <path d="M80 296h728M80 238h728M80 180h728" stroke="#F4F0E7" stroke-opacity=".1" stroke-dasharray="4 8"/>
+  <circle cx="504" cy="116" r="8" fill="#242338" stroke="#FF684A" stroke-width="3"/>
+  <circle cx="663" cy="247" r="7" fill="#242338" stroke="#D9FF72" stroke-width="3"/>
+  <circle cx="822" cy="135" r="9" fill="#242338" stroke="#A99AFF" stroke-width="3"/>
+  <circle cx="504" cy="116" r="19" stroke="#FF684A" stroke-opacity=".38"/>
+  <path d="M82 61h75M82 72h42M778 379h43" stroke="#F4F0E7" stroke-opacity=".54" stroke-width="2"/>
+</svg>

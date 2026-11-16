@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" fill="none">
+  <defs>
+    <linearGradient id="surface" x1="90" y1="52" x2="810" y2="402" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#252437"/>
+      <stop offset=".52" stop-color="#34305C"/>
+      <stop offset="1" stop-color="#202535"/>
+    </linearGradient>
+    <radialGradient id="center" cx="0" cy="0" r="1" gradientTransform="matrix(0 240 -300 0 447 226)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A99AFF" stop-opacity=".32"/>
+      <stop offset="1" stop-color="#A99AFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <path fill="url(#surface)" d="M0 0h900v440H0z"/>
+  <path fill="url(#center)" d="M0 0h900v440H0z"/>
+  <path d="M111 220h187m305 0h184M298 220l50-96m0 0h154m-154 0 53 96m154 0-53-96m53 96 53 96h-206m206 0h129" stroke="#D9FF72" stroke-opacity=".58" stroke-width="2"/>
+  <rect x="76" y="185" width="100" height="70" rx="14" fill="#242338" stroke="#A99AFF" stroke-opacity=".7"/>
+  <rect x="338" y="89" width="164" height="70" rx="16" fill="#26263D" stroke="#A99AFF" stroke-width="2"/>
+  <rect x="338" y="185" width="164" height="70" rx="16" fill="#28273F" stroke="#D9FF72" stroke-width="2"/>
+  <rect x="338" y="281" width="164" height="70" rx="16" fill="#26263D" stroke="#FF684A" stroke-opacity=".8" stroke-width="2"/>
+  <rect x="724" y="185" width="100" height="70" rx="14" fill="#242338" stroke="#D9FF72" stroke-opacity=".75"/>
+  <circle cx="120" cy="220" r="6" fill="#D9FF72"/>
+  <circle cx="420" cy="124" r="6" fill="#A99AFF"/>
+  <circle cx="420" cy="220" r="7" fill="#D9FF72"/>
+  <circle cx="420" cy="316" r="6" fill="#FF684A"/>
+  <circle cx="780" cy="220" r="6" fill="#D9FF72"/>
+  <path d="M365 220h112M420 101v45m-26 74 26-21m-26 117 26 21m25-237 25 25m-50 166 25-25" stroke="#F4F0E7" stroke-opacity=".35" stroke-width="2" stroke-dasharray="3 7"/>
+  <circle cx="420" cy="220" r="113" stroke="#A99AFF" stroke-opacity=".15"/>
+  <circle cx="420" cy="220" r="152" stroke="#A99AFF" stroke-opacity=".1" stroke-dasharray="3 9"/>
+</svg>
