@@ -1,0 +1,18 @@
+{
+  "placeholder": true,
+  "notice": "PLACEHOLDER ONLY. No market data is included. Generate prices.json from your own exported CSV.",
+  "tickers": [
+    {
+      "symbol": "TICKER_1",
+      "prices": []
+    },
+    {
+      "symbol": "TICKER_2",
+      "prices": []
+    },
+    {
+      "symbol": "TICKER_3",
+      "prices": []
+    }
+  ]
+}

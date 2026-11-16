@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "node --env-file-if-exists=.env.local dev-server.js",
-    "build": "node --check api/contact.js && node --check dev-server.js && node --check public/script.js && node --test tests/*.test.js",
+    "build": "node --check api/contact.js && node --check dev-server.js && node --check public/script.js && node --check public/signal-lab.js && node --check tools/csv-to-prices.js && node --test tests/*.test.js",
     "test": "node --test tests/*.test.js"
   },
   "keywords": [

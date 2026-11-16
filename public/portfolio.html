@@ -61,6 +61,7 @@
       <div class="nav__menu" id="nav-menu">
         <a class="nav__link" href="index.html">Intro</a>
         <a class="nav__link" href="#work">Work</a>
+        <a class="nav__link" href="#signal-lab">Signal Lab</a>
         <a class="nav__link" href="#about">Approach</a>
         <a class="nav__link" href="#stack">Toolkit</a>
         <a class="nav__link" href="#experience">Experience</a>
@@ -209,6 +210,42 @@
           </article>
         </div>
         <p class="project-note">Want to know more about a project? <a href="#contact">Email me directly <span aria-hidden="true">↗</span></a></p>
+      </div>
+    </section>
+
+    <section class="section signal-lab-section" id="signal-lab" aria-labelledby="signal-lab-title">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow section-heading__eyebrow">MARKETS × AI</p>
+            <h2 id="signal-lab-title">Signal <span>Lab.</span></h2>
+          </div>
+          <p class="section-heading__aside">A local, educational look at how rolling averages and volatility describe historical closes.</p>
+        </div>
+        <div class="signal-lab__panel">
+          <fieldset class="signal-lab__controls" id="signal-lab-controls" disabled>
+            <legend>Explore the data</legend>
+            <label for="signal-lab-ticker">Ticker</label>
+            <select id="signal-lab-ticker" name="ticker"></select>
+            <label class="signal-lab__toggle"><input id="signal-lab-crossover" type="checkbox"> Show 20 / 50-day moving averages and crossovers</label>
+            <label class="signal-lab__toggle"><input id="signal-lab-volatility" type="checkbox"> Show 20-day rolling volatility</label>
+          </fieldset>
+          <p class="signal-lab__status" id="signal-lab-status" role="status" aria-live="polite">TODO: Add your own three-ticker daily-close CSV and convert it to <code>data/prices.json</code>. No market prices were supplied or fabricated.</p>
+          <figure class="signal-lab__figure">
+            <div class="signal-lab__chart-scroll" role="region" aria-label="Scrollable historical market chart" tabindex="0">
+              <svg id="signal-lab-chart" class="signal-lab__chart" viewBox="0 0 760 340" role="group" aria-labelledby="signal-lab-chart-title signal-lab-chart-description">
+                <title id="signal-lab-chart-title">Historical daily closing prices</title>
+                <desc id="signal-lab-chart-description">The chart will display owner-supplied daily closes and optional moving-average and rolling-volatility overlays.</desc>
+              </svg>
+            </div>
+            <figcaption id="signal-lab-summary" aria-live="polite">A chart will appear after a real, owner-exported dataset is added.</figcaption>
+          </figure>
+          <div class="signal-lab__note">
+            <div><h3>What this shows</h3><p>Historical closes, the relationship between 20- and 50-day averages, and changes in recent daily-return volatility.</p></div>
+            <div><h3>What it can’t tell you</h3><p>These summaries do not predict future prices, explain every market move, or establish that a trade is suitable.</p></div>
+            <p class="signal-lab__disclaimer">Educational only. Not financial advice.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -401,6 +438,7 @@
     </div>
   </footer>
 
+  <script src="signal-lab.js" defer></script>
   <script src="script.js" defer></script>
 </body>
 </html>

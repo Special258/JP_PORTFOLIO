@@ -22,6 +22,9 @@ const publicFiles = new Map([
   ['/landing.css', ['landing.css', 'text/css; charset=utf-8']],
   ['/styles.css', ['styles.css', 'text/css; charset=utf-8']],
   ['/script.js', ['script.js', 'application/javascript; charset=utf-8']],
+  ['/signal-lab.js', ['signal-lab.js', 'application/javascript; charset=utf-8']],
+  ['/data/prices.json', ['data/prices.json', 'application/json; charset=utf-8']],
+  ['/data/prices.example.json', ['data/prices.example.json', 'application/json; charset=utf-8']],
   ['/JAL_PATEL_RESUME.pdf', ['JAL_PATEL_RESUME.pdf', 'application/pdf']],
   ['/assets/hero-signal-map.svg', ['assets/hero-signal-map.svg', 'image/svg+xml; charset=utf-8']],
   ['/assets/landing-ai-mesh.svg', ['assets/landing-ai-mesh.svg', 'image/svg+xml; charset=utf-8']],
@@ -105,6 +108,9 @@ const server = http.createServer(async function (req, res) {
     });
     return res.end(req.method === 'HEAD' ? undefined : content);
   } catch (error) {
+    if (error.code === 'ENOENT') {
+      return sendJson(res, 404, { error: 'Not found.' });
+    }
     console.error(`Unable to serve ${asset[0]}:`, error.message);
     return sendJson(res, 500, { error: 'Unable to serve this page.' });
   }

@@ -55,7 +55,7 @@ async function waitForPage(port, pathname, server) {
   throw lastError || new Error('The preview server did not become ready.');
 }
 
-test('case study routes are allowlisted and keep the self-only script policy', async function (t) {
+test('case study and Signal Lab routes are allowlisted and keep the self-only script policy', async function (t) {
   const port = await findAvailablePort();
   const server = spawn(process.execPath, [path.join(root, 'dev-server.js')], {
     cwd: root,
@@ -84,4 +84,18 @@ test('case study routes are allowlisted and keep the self-only script policy', a
     assert.match(response.body, new RegExp(`<h1>\\s*${route[1].replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*</h1>`));
     assert.doesNotMatch(response.body, /<script\b/i);
   }
+
+  const scriptResponse = await getPage(port, '/signal-lab.js');
+  assert.equal(scriptResponse.statusCode, 200);
+  assert.match(scriptResponse.headers['content-type'], /application\/javascript/);
+  assert.match(scriptResponse.headers['content-security-policy'], /script-src 'self'/);
+  assert.match(scriptResponse.body, /function movingAverage/);
+
+  const exampleResponse = await getPage(port, '/data/prices.example.json');
+  assert.equal(exampleResponse.statusCode, 200);
+  assert.match(exampleResponse.headers['content-type'], /application\/json/);
+  assert.match(exampleResponse.body, /"placeholder": true/);
+
+  const missingDataResponse = await getPage(port, '/data/prices.json');
+  assert.equal(missingDataResponse.statusCode, 404, 'missing owner-supplied prices should have an explicit not-found response');
 });

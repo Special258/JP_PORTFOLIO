@@ -26,6 +26,7 @@ When Git is connected to Vercel, pushes to the production branch deploy the live
 - Add experience entries in the `#experience` section of `public/portfolio.html`.
 - Update presentation in `public/styles.css` (portfolio page) or `public/landing.css` (introduction page). Update `public/script.js` only when interaction behavior needs to change.
 - Replace `public/JAL_PATEL_RESUME.pdf` with the updated résumé using the same filename so the existing links continue to work.
+- Signal Lab intentionally starts without prices. To add your own data, export a CSV with `date,ticker,close` columns and exactly three ticker symbols, then run `node tools/csv-to-prices.js path/to/export.csv`. The script writes `public/data/prices.json`, which is loaded locally by the browser. `public/data/prices.example.json` is a labelled placeholder and is never used as market data.
 - Run `npm run build` and preview with `npm run dev`. Push the change to a branch and inspect its Vercel preview before merging it into the production branch.
 
 Keep private files and credentials out of Git and Vercel deployments. `Profile.pdf` is intentionally excluded; only the résumé linked from the site is published.
@@ -58,6 +59,9 @@ npm run build
 - `public/styles.css` — responsive visual system and mobile layouts
 - `public/assets/*.svg` — original logo and abstract hero/project illustrations
 - `public/script.js` — navigation, project filters, and reveal effects
+- `public/signal-lab.js` — local Signal Lab calculations and accessible SVG chart
+- `public/data/prices.example.json` — placeholder schema only; contains no market prices
+- `tools/csv-to-prices.js` — converts an owner-exported CSV to the Signal Lab JSON format
 - `api/contact.js` — optional Vercel function for direct API contact submissions
 - `tests/contact.test.js` — API validation and storage behavior tests
 - `tests/case-studies.test.js` — case-study route and content-security-policy checks

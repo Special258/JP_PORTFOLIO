@@ -938,6 +938,47 @@ body {
 }
 .nav__link[aria-current="location"] { color: var(--ink); }
 .nav__link[aria-current="location"]::after { transform: scaleX(1); }
+
+.signal-lab-section { padding-block: 100px; border-block: 1px solid var(--line); }
+.signal-lab__panel { padding: clamp(18px, 4vw, 36px); border: 1px solid var(--line); border-radius: 17px; background: #211f1d; color: var(--ink); }
+.signal-lab__controls { display: grid; grid-template-columns: auto minmax(150px, 240px); align-items: center; gap: 12px 18px; margin: 0 0 20px; padding: 0; border: 0; }
+.signal-lab__controls legend { grid-column: 1 / -1; margin-bottom: 5px; color: var(--ink); font-size: 15px; font-weight: 600; }
+.signal-lab__controls > label:not(.signal-lab__toggle) { color: #c1bdb5; font-size: 13px; }
+.signal-lab__controls select { min-height: 42px; padding: 7px 10px; border: 1px solid var(--line); border-radius: 3px; background: #201f1d; color: var(--ink); font: inherit; font-size: 13px; }
+.signal-lab__toggle { display: flex; grid-column: 1 / -1; align-items: flex-start; gap: 10px; color: #d3cfc6; font-size: 13px; line-height: 1.5; cursor: pointer; }
+.signal-lab__toggle input { width: 18px; height: 18px; flex: 0 0 auto; margin: 2px 0 0; accent-color: var(--lime); }
+.signal-lab__controls :disabled { opacity: .62; cursor: not-allowed; }
+.signal-lab__status { margin: 0 0 16px; padding: 12px 14px; border-left: 3px solid var(--lime); background: rgb(255 255 255 / 4%); color: #d6d2c9; font-size: 13px; overflow-wrap: anywhere; }
+.signal-lab__status code { color: var(--lime); font-family: var(--mono); font-size: 12px; }
+.signal-lab__figure { margin: 0; }
+.signal-lab__chart-scroll { max-width: 100%; overflow-x: auto; border: 1px solid rgb(255 255 255 / 12%); background: #1b1a18; }
+.signal-lab__chart-scroll:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
+.signal-lab__chart { width: 100%; min-width: 760px; overflow: visible; background: #1b1a18; }
+.signal-lab__gridline { stroke: rgb(255 255 255 / 11%); stroke-width: 1; }
+.signal-lab__axis { stroke: rgb(255 255 255 / 32%); stroke-width: 1; }
+.signal-lab__axis-label { fill: #bdb9b1; font-family: var(--mono); font-size: 12px; }
+.signal-lab__axis-label--end { text-anchor: end; }
+.signal-lab__line { fill: none; stroke-width: 2; vector-effect: non-scaling-stroke; }
+.signal-lab__line--close { stroke: var(--lime); }
+.signal-lab__line--short { stroke: #b7aaff; }
+.signal-lab__line--long { stroke: var(--coral); }
+.signal-lab__line--volatility { stroke: #86c3b0; }
+.signal-lab__point { fill: var(--lime); stroke: #1b1a18; stroke-width: 1; cursor: crosshair; }
+.signal-lab__point--volatility { fill: #86c3b0; }
+.signal-lab__point:focus, .signal-lab__crossover:focus { stroke: #fff; stroke-width: 3; outline: none; }
+.signal-lab__crossover { fill: var(--coral); stroke: #1b1a18; stroke-width: 1; cursor: crosshair; }
+.signal-lab__figure figcaption { margin-top: 12px; color: #d0ccc3; font-size: 13px; line-height: 1.7; }
+.signal-lab__note { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 26px; margin-top: 25px; padding-top: 22px; border-top: 1px solid rgb(255 255 255 / 14%); }
+.signal-lab__note h3 { margin: 0 0 5px; color: var(--ink); font-size: 14px; }
+.signal-lab__note p { margin: 0; color: #c5c1b8; font-size: 13px; line-height: 1.7; }
+.signal-lab__note .signal-lab__disclaimer { grid-column: 1 / -1; color: var(--lime); font-weight: 600; }
+@media (max-width: 720px) {
+  .signal-lab-section { padding-block: 76px; }
+  .signal-lab__controls { grid-template-columns: 1fr; gap: 9px; }
+  .signal-lab__controls legend { margin-bottom: 3px; }
+  .signal-lab__note { grid-template-columns: 1fr; gap: 16px; }
+  .signal-lab__note .signal-lab__disclaimer { grid-column: auto; }
+}
 .hero__copy {
   animation: portfolio-arrive .8s .08s var(--ease) both;
 }
