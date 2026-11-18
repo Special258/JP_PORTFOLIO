@@ -160,8 +160,30 @@ async function captureAll(outputDir = 'baseline') {
         mobile: vp.mobile
       });
 
+      await sendCDP(pageWs, pId, 'Emulation.setEmulatedMedia', {
+        media: 'screen',
+        features: [{ name: 'prefers-reduced-motion', value: 'reduce' }]
+      });
+
       await sendCDP(pageWs, pId, 'Page.navigate', { url: p.url });
       await new Promise((r) => setTimeout(r, 1200));
+
+      await sendCDP(pageWs, pId, 'Runtime.evaluate', {
+        expression: 'document.fonts.ready.then(() => true)',
+        awaitPromise: true
+      });
+
+      await sendCDP(pageWs, pId, 'Runtime.evaluate', {
+        expression: `(() => {
+          try {
+            document.getAnimations().forEach(a => {
+              if (a.finish) { try { a.finish(); } catch(e) { a.pause(); } }
+              else if (a.pause) a.pause();
+            });
+          } catch(e) {}
+        })()`
+      });
+      await new Promise((r) => setTimeout(r, 400));
 
       // 1. Full page screenshot
       const fullShot = await sendCDP(pageWs, pId, 'Page.captureScreenshot', {
@@ -192,14 +214,16 @@ async function captureAll(outputDir = 'baseline') {
         });
 
         const box = evalRes.result && evalRes.result.value;
-        if (box && box.width > 0 && box.height > 0) {
+        if (box && box.width >= 1 && box.height >= 1) {
+          const clipWidth = Math.max(1, Math.floor(Math.min(vp.width, box.width)));
+          const clipHeight = Math.max(1, Math.ceil(box.height));
           const secShot = await sendCDP(pageWs, pId, 'Page.captureScreenshot', {
             format: 'png',
             clip: {
-              x: Math.max(0, box.x),
-              y: Math.max(0, box.y),
-              width: Math.min(vp.width, box.width),
-              height: Math.ceil(box.height),
+              x: Math.max(0, Math.floor(box.x)),
+              y: Math.max(0, Math.floor(box.y)),
+              width: clipWidth,
+              height: clipHeight,
               scale: 1
             },
             captureBeyondViewport: true

@@ -1,0 +1,237 @@
+/* Journey Page Styles */
+.journey-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.journey-back {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--white);
+  transition: all 0.2s var(--ease);
+}
+
+.journey-back:hover,
+.journey-back:focus-visible {
+  color: var(--ink);
+  border-color: var(--ink);
+  transform: translateX(-2px);
+}
+
+.journey-main {
+  padding: 48px 0 80px;
+  max-width: var(--content);
+}
+
+.journey-intro {
+  margin-bottom: 48px;
+}
+
+.journey-intro h1 {
+  font-family: var(--sans);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1.15;
+  margin: 12px 0 16px;
+}
+
+.journey-intro p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 680px;
+}
+
+.journey-timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 60px;
+  position: relative;
+}
+
+.journey-timeline::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  bottom: 24px;
+  left: 20px;
+  width: 2px;
+  background: var(--line);
+}
+
+@media (min-width: 768px) {
+  .journey-timeline::before {
+    left: 140px;
+  }
+}
+
+.journey-item {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 48px;
+}
+
+@media (min-width: 768px) {
+  .journey-item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    padding-left: 0;
+    gap: 36px;
+  }
+}
+
+.journey-node {
+  position: absolute;
+  top: 6px;
+  left: 14px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--forest);
+  border: 3px solid var(--paper);
+  box-shadow: 0 0 0 1px var(--forest);
+}
+
+@media (min-width: 768px) {
+  .journey-node {
+    left: 134px;
+  }
+}
+
+.journey-node--active {
+  background: var(--violet);
+  box-shadow: 0 0 0 1px var(--violet);
+}
+
+.journey-time {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 8px;
+}
+
+@media (min-width: 768px) {
+  .journey-time {
+    text-align: right;
+    margin-bottom: 0;
+    padding-top: 4px;
+  }
+}
+
+.journey-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 24px 28px;
+  box-shadow: 0 4px 16px rgba(25, 58, 47, 0.04);
+}
+
+.journey-card__header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.journey-card__header h2 {
+  font-family: var(--sans);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+}
+
+.journey-badge {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: var(--paper-deep);
+  color: var(--ink);
+}
+
+.journey-badge--deployed {
+  background: rgba(47, 89, 69, 0.12);
+  color: var(--forest);
+}
+
+.journey-badge--progress {
+  background: rgba(110, 76, 199, 0.12);
+  color: var(--violet);
+}
+
+.journey-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin-bottom: 14px;
+}
+
+.journey-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.journey-tags li {
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 3px 9px;
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink-soft);
+}
+
+.journey-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 0 64px;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+.journey-footer a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--line);
+  padding-bottom: 2px;
+  transition: border-color 0.2s var(--ease);
+}
+
+.journey-footer a:hover,
+.journey-footer a:focus-visible {
+  border-color: var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .journey-back,
+  .journey-footer a {
+    transition: none;
+  }
+}

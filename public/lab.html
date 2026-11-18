@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Signal Lab: an interactive exploration of market price signals, moving average crossovers, and rolling volatility by Jal Patel.">
+  <title>Signal Lab: Markets × AI — Jal Patel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="lab.css">
+  <link rel="icon" type="image/svg+xml" href="assets/jp-mark.svg">
+  <link rel="manifest" href="site.webmanifest">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="lab-header container">
+    <a class="brand" href="portfolio.html#top" aria-label="Jal Patel, portfolio home">
+      <span class="brand__mark"><img src="assets/jp-mark.svg" alt="" width="40" height="40"></span>
+      <span class="brand__name">Jal Patel<span class="brand__dot">.</span></span>
+    </a>
+    <a class="lab-back" href="portfolio.html#signal-lab">Back to portfolio</a>
+  </header>
+
+  <main class="lab-main container" id="main">
+    <header class="lab-intro">
+      <p class="eyebrow">INTERACTIVE EXPLORATION / MARKETS &amp; AI</p>
+      <h1>Signal Lab: Markets × AI</h1>
+      <p>A client-side interactive tool for inspecting daily closing prices, trailing moving-average crossovers, and rolling volatility without remote network requests.</p>
+      <div class="lab-disclaimer" role="note">
+        <strong aria-hidden="true">ℹ</strong>
+        <span><strong>Educational, not financial advice.</strong> This tool illustrates signal extraction concepts for algorithmic systems. It does not provide trading recommendations.</span>
+      </div>
+    </header>
+
+    <section class="lab-container" aria-label="Interactive market signal chart">
+      <fieldset class="lab-controls-panel" id="signal-lab-controls" disabled>
+        <legend class="sr-only">Chart controls</legend>
+        <div class="lab-control-group">
+          <label for="signal-lab-ticker">Select Ticker:</label>
+          <select class="lab-select" id="signal-lab-ticker" aria-controls="signal-lab-chart">
+            <option value="">Loading tickers…</option>
+          </select>
+        </div>
+
+        <div class="lab-control-group">
+          <label class="lab-checkbox-label" for="signal-lab-crossover">
+            <input class="lab-checkbox" type="checkbox" id="signal-lab-crossover">
+            <span>20 / 50-day MA Crossover</span>
+          </label>
+        </div>
+
+        <div class="lab-control-group">
+          <label class="lab-checkbox-label" for="signal-lab-volatility">
+            <input class="lab-checkbox" type="checkbox" id="signal-lab-volatility">
+            <span>20-day Rolling Volatility</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="lab-status" id="signal-lab-status" role="status" aria-live="polite">Loading local dataset…</div>
+
+      <div class="lab-chart-wrapper">
+        <svg class="lab-chart-svg" id="signal-lab-chart" viewBox="0 0 800 340" aria-label="Market signal interactive chart" role="img" focusable="false"></svg>
+      </div>
+
+      <div class="lab-summary-box" id="signal-lab-summary" aria-live="polite">
+        Select a ticker above to review closing prices, moving average relationships, and volatility metrics.
+      </div>
+    </section>
+
+    <div class="lab-explanation-grid">
+      <article class="lab-card">
+        <h2>What this shows</h2>
+        <p>Market signal extraction relies on mathematically transforming price series into normalized indicators that machine learning models and trading systems can process:</p>
+        <ul>
+          <li><strong>Moving Average Crossovers:</strong> Contrasts short-term momentum (20-day) against intermediate trends (50-day) to highlight structural direction.</li>
+          <li><strong>Rolling Volatility:</strong> Standard deviation of daily logarithmic returns over a 20-day trailing window, measuring market regime shifts and dispersion.</li>
+          <li><strong>Zero-Network Client Evaluation:</strong> All statistical calculations run entirely in the browser using lightweight math functions.</li>
+        </ul>
+      </article>
+
+      <article class="lab-card">
+        <h2>What it can't tell you</h2>
+        <p>Quantitative features require careful interpretation and should never be viewed as standalone predictors:</p>
+        <ul>
+          <li><strong>Lagging Indicator Bias:</strong> Moving averages inherently lag real-time market shifts; crossovers occur only after price movement has begun.</li>
+          <li><strong>Non-Stationarity:</strong> Financial market distributions evolve over time; past volatility regimes rarely repeat identically.</li>
+          <li><strong>Execution Realities:</strong> The chart omits liquidity friction, bid-ask spreads, order book depth, and market impact.</li>
+        </ul>
+      </article>
+    </div>
+  </main>
+
+  <footer class="lab-footer container">
+    <a href="portfolio.html#signal-lab">Return to Portfolio Signal Lab section</a>
+    <a href="case-studies/kairon.html">Explore Kairon case study</a>
+  </footer>
+
+  <script src="signal-lab.js"></script>
+</body>
+</html>

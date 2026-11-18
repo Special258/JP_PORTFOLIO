@@ -1,0 +1,329 @@
+/* HTML Résumé Page Styles & Print Stylesheet */
+.resume-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 0 24px;
+  border-bottom: 1px solid var(--line);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .resume-page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 0;
+  }
+  .resume-page-actions {
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+  }
+  .resume-btn {
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+}
+
+.resume-page-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.resume-btn {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--white);
+  transition: all 0.2s var(--ease);
+  cursor: pointer;
+}
+
+.resume-btn:hover,
+.resume-btn:focus-visible {
+  border-color: var(--ink);
+  color: var(--ink);
+  transform: translateY(-1px);
+}
+
+.resume-btn--primary {
+  background: var(--forest);
+  color: var(--white);
+  border-color: var(--forest);
+}
+
+.resume-btn--primary:hover,
+.resume-btn--primary:focus-visible {
+  background: var(--forest-light);
+  color: var(--white);
+}
+
+.resume-paper {
+  max-width: 860px;
+  margin: 40px auto 80px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 48px;
+  box-shadow: 0 8px 30px rgba(25, 58, 47, 0.06);
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 640px) {
+  .resume-paper {
+    padding: 24px 16px;
+    margin: 20px auto 40px;
+    border-radius: 8px;
+  }
+  .resume-contact-bar {
+    gap: 8px;
+    font-size: 12px;
+  }
+  .resume-header h1 {
+    font-size: 26px;
+  }
+  .resume-entry__heading {
+    flex-direction: column;
+  }
+}
+
+.resume-header {
+  border-bottom: 2px solid var(--line);
+  padding-bottom: 24px;
+  margin-bottom: 28px;
+}
+
+.resume-header h1 {
+  font-family: var(--sans);
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+}
+
+.resume-tagline {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--forest);
+  margin-bottom: 12px;
+}
+
+.resume-contact-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 13px;
+  font-family: var(--mono);
+  color: var(--ink-soft);
+}
+
+.resume-contact-bar a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--line);
+}
+
+.resume-section {
+  margin-bottom: 28px;
+}
+
+.resume-section h2 {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 6px;
+  margin-bottom: 16px;
+}
+
+.resume-entry {
+  margin-bottom: 20px;
+}
+
+.resume-entry:last-child {
+  margin-bottom: 0;
+}
+
+.resume-entry__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.resume-entry__title {
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.resume-entry__date {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.resume-entry__subhead {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+
+.resume-entry ul {
+  padding-left: 20px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resume-entry li {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+.resume-tech-line {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--forest);
+  margin-top: 6px;
+}
+
+.resume-skills-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 600px) {
+  .resume-skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.resume-skill-item {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.resume-skill-item strong {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink);
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.resume-page-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 0 64px;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+.resume-page-footer a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--line);
+  padding-bottom: 2px;
+}
+
+/* Print Stylesheet */
+@media print {
+  @page {
+    margin: 1.2cm;
+    size: A4 portrait;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt !important;
+  }
+
+  .skip-link,
+  .resume-page-header,
+  .resume-page-footer,
+  .resume-page-actions {
+    display: none !important;
+  }
+
+  .resume-paper {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    max-width: 100% !important;
+  }
+
+  .resume-header {
+    border-bottom: 1.5pt solid #333333 !important;
+    margin-bottom: 16pt !important;
+    padding-bottom: 12pt !important;
+  }
+
+  .resume-header h1 {
+    font-size: 22pt !important;
+    color: #000000 !important;
+  }
+
+  .resume-tagline {
+    color: #333333 !important;
+    font-size: 10pt !important;
+  }
+
+  .resume-contact-bar {
+    color: #444444 !important;
+    font-size: 9pt !important;
+  }
+
+  .resume-section h2 {
+    color: #000000 !important;
+    border-bottom: 1pt solid #444444 !important;
+    font-size: 10.5pt !important;
+  }
+
+  .resume-entry__title {
+    color: #000000 !important;
+    font-size: 11pt !important;
+  }
+
+  .resume-entry li,
+  .resume-skill-item {
+    color: #222222 !important;
+    font-size: 9.5pt !important;
+    line-height: 1.4 !important;
+  }
+
+  a {
+    color: #000000 !important;
+    text-decoration: none !important;
+    border: none !important;
+  }
+}

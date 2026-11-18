@@ -1,0 +1,241 @@
+/* Signal Lab Standalone Page Styles */
+.lab-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.lab-back {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--white);
+  transition: all 0.2s var(--ease);
+}
+
+.lab-back:hover,
+.lab-back:focus-visible {
+  color: var(--ink);
+  border-color: var(--ink);
+  transform: translateX(-2px);
+}
+
+.lab-main {
+  padding: 48px 0 80px;
+  max-width: var(--content);
+}
+
+.lab-intro {
+  margin-bottom: 36px;
+}
+
+.lab-intro h1 {
+  font-family: var(--sans);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1.15;
+  margin: 12px 0 16px;
+}
+
+.lab-intro p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 720px;
+}
+
+.lab-disclaimer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  background: rgba(227, 203, 150, 0.25);
+  border: 1px solid var(--lime-dark);
+  border-radius: 8px;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--ink);
+  margin-top: 20px;
+}
+
+.lab-container {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 4px 20px rgba(25, 58, 47, 0.05);
+  margin-bottom: 48px;
+}
+
+.lab-controls-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 24px;
+}
+
+.lab-control-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lab-control-group label {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.lab-select {
+  font-family: var(--mono);
+  font-size: 14px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.lab-checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink);
+  cursor: pointer;
+  user-select: none;
+}
+
+.lab-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--forest);
+  cursor: pointer;
+}
+
+.lab-status {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 16px;
+  min-height: 20px;
+}
+
+.lab-chart-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 340px;
+  background: #0f1715;
+  border-radius: 12px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.lab-chart-svg {
+  width: 100%;
+  height: 340px;
+  display: block;
+}
+
+.lab-summary-box {
+  margin-top: 24px;
+  padding: 20px;
+  background: var(--paper);
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink);
+}
+
+.lab-explanation-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  margin-top: 36px;
+}
+
+@media (min-width: 768px) {
+  .lab-explanation-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.lab-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 28px;
+}
+
+.lab-card h2 {
+  font-family: var(--sans);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+
+.lab-card p,
+.lab-card li {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+.lab-card ul {
+  padding-left: 20px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lab-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 0 64px;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+.lab-footer a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--line);
+  padding-bottom: 2px;
+  transition: border-color 0.2s var(--ease);
+}
+
+.lab-footer a:hover,
+.lab-footer a:focus-visible {
+  border-color: var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lab-back,
+  .lab-footer a {
+    transition: none;
+  }
+}

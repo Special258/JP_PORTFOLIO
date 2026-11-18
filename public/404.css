@@ -1,0 +1,117 @@
+/* 404 Error Page Styles */
+.error-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #11131b;
+  color: #f4f0e7;
+  padding: 32px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.error-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--content);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.error-main {
+  max-width: 640px;
+  margin: auto;
+  text-align: center;
+  padding: 40px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.error-code {
+  font-family: var(--mono);
+  font-size: clamp(72px, 12vw, 120px);
+  font-weight: 700;
+  line-height: 1;
+  color: #e3cb96;
+  letter-spacing: -0.04em;
+  margin: 0 0 16px;
+  text-shadow: 0 0 30px rgba(227, 203, 150, 0.2);
+}
+
+.error-main h1 {
+  font-family: var(--sans);
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 700;
+  color: #fffdf6;
+  margin: 0 0 16px;
+  letter-spacing: -0.02em;
+}
+
+.error-main p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(244, 240, 231, 0.75);
+  margin: 0 0 32px;
+}
+
+.error-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.error-btn {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 10px 22px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: all 0.2s var(--ease);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.error-btn--primary {
+  background: #e3cb96;
+  color: #11131b;
+  font-weight: 600;
+}
+
+.error-btn--primary:hover,
+.error-btn--primary:focus-visible {
+  background: #fffdf6;
+  transform: translateY(-2px);
+}
+
+.error-btn--secondary {
+  border: 1px solid rgba(244, 240, 231, 0.3);
+  color: #f4f0e7;
+}
+
+.error-btn--secondary:hover,
+.error-btn--secondary:focus-visible {
+  border-color: #f4f0e7;
+  transform: translateY(-2px);
+}
+
+.error-footer {
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: rgba(244, 240, 231, 0.4);
+  max-width: var(--content);
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .error-btn {
+    transition: none;
+  }
+}

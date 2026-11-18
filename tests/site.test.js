@@ -11,7 +11,13 @@ const pageFiles = [
   'portfolio.html',
   'case-studies/kairon.html',
   'case-studies/janus.html',
-  'case-studies/hive.html'
+  'case-studies/hive.html',
+  'lab.html',
+  'journey.html',
+  'certifications.html',
+  'now.html',
+  'resume.html',
+  '404.html'
 ];
 
 function decodeHtml(value) {
