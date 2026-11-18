@@ -96,8 +96,12 @@ test('case study and Signal Lab routes are allowlisted and keep the self-only sc
   assert.match(exampleResponse.headers['content-type'], /application\/json/);
   assert.match(exampleResponse.body, /"placeholder": true/);
 
-  const missingDataResponse = await getPage(port, '/data/prices.json');
-  assert.equal(missingDataResponse.statusCode, 404, 'missing owner-supplied prices should have an explicit not-found response');
+  const pricesResponse = await getPage(port, '/data/prices.json');
+  assert.equal(pricesResponse.statusCode, 200, 'market prices dataset should be served');
+  assert.match(pricesResponse.headers['content-type'], /application\/json/);
+  assert.match(pricesResponse.body, /"NVDA"/);
+  assert.match(pricesResponse.body, /"SPY"/);
+  assert.match(pricesResponse.body, /"AAPL"/);
 
   const supportFiles = [
     ['/robots.txt', /text\/plain/, /TODO: Add a Sitemap directive/],
