@@ -17,6 +17,7 @@ const pageFiles = [
   'certifications.html',
   'now.html',
   'resume.html',
+  'directory.html',
   '404.html'
 ];
 

@@ -81,11 +81,28 @@ All proposals are numbered P1 through P6. None of these patches have been applie
 
 ## Proposal P3: Links from Existing Pages to New Standalone Pages
 
-**One-line reason:** Provide paths for visitors to discover `/lab.html`, `/journey.html`, `/certifications.html`, `/now.html`, and `/resume.html`.  
-**Visible effect:** Two options provided: Option A (unobtrusive footer links) or Option B (zero visible change).
+**One-line reason:** Provide paths for visitors to discover `/lab.html`, `/journey.html`, `/certifications.html`, `/now.html`, `/resume.html`, and case studies.  
+**Visible effect:** Three options provided: **Option A ("One Link for All" Directory)**, Option B (multi-link footer), or Option C (zero visible change).
 
-### Option A: Clean Sub-Footer Text Links
-Location: Inside `.site-footer` on `portfolio.html` and `.landing-footer` on `index.html`. Reuses existing typography (`var(--mono)`, 12px, muted ink).
+### Option A: "One Link for All" Directory (Recommended)
+Adds a single, elegant link (`Directory ↗`) to the footer of `public/portfolio.html` and `public/index.html`. Clicking it opens [`/directory.html`](http://localhost:3000/directory.html), which cleanly indexes all pages, case studies, interactive tools, and the résumé.
+
+Location: Inside `.footer-content` in `public/portfolio.html`. Reuses existing typography (`var(--mono)`, 12px, muted ink).
+
+```diff
+--- a/public/portfolio.html
++++ b/public/portfolio.html
+@@ -645,6 +645,7 @@
+     <div class="container footer-content">
+       <span class="footer-credit">JAL PATEL / 2026</span>
+       <a class="footer-top" href="#top">Back to top ↑</a>
++      <a class="footer-directory-link" href="directory.html">Directory ↗</a>
+     </div>
+   </footer>
+```
+
+### Option B: Multiple Direct Sub-Footer Text Links
+Location: Inside `.site-footer` on `portfolio.html` and `.landing-footer` on `index.html`.
 
 ```diff
 --- a/public/portfolio.html
@@ -105,13 +122,14 @@ Location: Inside `.site-footer` on `portfolio.html` and `.landing-footer` on `in
    </footer>
 ```
 
-### Option B: Zero Visible Element Variant (Invisible `<head>` Discovery Links)
+### Option C: Zero Visible Element Variant (Invisible `<head>` Discovery Links)
 Adds `<link rel="related">` tags inside `<head>` of both pages. Visually 100% pixel-identical (0% diff).
 
 ```diff
 --- a/public/portfolio.html
 +++ b/public/portfolio.html
-@@ -12,6 +12,11 @@
+@@ -12,6 +12,12 @@
++  <link rel="related" href="directory.html" title="Site Directory">
 +  <link rel="related" href="lab.html" title="Signal Lab">
 +  <link rel="related" href="journey.html" title="Journey & Milestones">
 +  <link rel="related" href="certifications.html" title="All Certifications">
