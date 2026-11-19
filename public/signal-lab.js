@@ -484,6 +484,178 @@ if (typeof module !== 'undefined' && module.exports) {
       color: var(--ink);
       margin: 0;
     }
+
+    /* --------------------------------------------------------------------------
+       ENHANCED SIDEBAR BRIGHTNESS, CONTRAST & LEGIBILITY (DESKTOP RAILS)
+       Fixes sidebar washed-out appearance on Signal Lab, Preamble, and across all sections.
+       -------------------------------------------------------------------------- */
+    @media (min-width: 1440px) and (min-height: 700px) {
+      /* High-contrast, crystal-clear sidebar styles for LIGHT backgrounds */
+      .page-rail {
+        color: #171923 !important;
+        font-family: var(--mono) !important;
+      }
+      .page-rail--right {
+        border-left: 1.5px solid rgba(23, 25, 35, 0.28) !important;
+      }
+      .page-rail__eyebrow,
+      .page-rail__footer {
+        color: #1a1c26 !important;
+        font-size: 8.5px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.14em !important;
+        line-height: 1.4 !important;
+      }
+      .page-rail__nav::before {
+        background: rgba(23, 25, 35, 0.25) !important;
+        opacity: 1 !important;
+      }
+      .page-rail__link {
+        color: #2e303d !important;
+        font-size: 9.5px !important;
+        font-weight: 600 !important;
+        opacity: 1 !important;
+        transition: color .2s ease, transform .2s ease !important;
+      }
+      .page-rail__link i {
+        width: 6px !important;
+        height: 6px !important;
+        border: 1.5px solid #2e303d !important;
+        border-radius: 50% !important;
+        background: #fffdf8 !important;
+      }
+      .page-rail__link:hover,
+      .page-rail__link:focus-visible {
+        color: #6e4cc7 !important;
+        opacity: 1 !important;
+        transform: translateX(2px) !important;
+      }
+      .page-rail__link[aria-current="location"] {
+        color: #6e4cc7 !important;
+        font-weight: 700 !important;
+        opacity: 1 !important;
+        transform: translateX(3px) !important;
+      }
+      .page-rail__link[aria-current="location"] i {
+        border-color: #6e4cc7 !important;
+        background: #6e4cc7 !important;
+        box-shadow: 0 0 0 4px rgba(110, 76, 199, 0.25) !important;
+      }
+      .page-rail__counter span:first-child {
+        color: #6e4cc7 !important;
+        font-size: 28px !important;
+        font-weight: 700 !important;
+        line-height: 1 !important;
+      }
+      .page-rail__counter span:last-child {
+        color: #2e303d !important;
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        opacity: 1 !important;
+      }
+      .page-rail__signal-track {
+        stroke: #6e4cc7 !important;
+        stroke-width: 1.75px !important;
+        opacity: 0.95 !important;
+      }
+      .page-rail__signal-node {
+        fill: #fffdf8 !important;
+        stroke: #6e4cc7 !important;
+        stroke-width: 1.75px !important;
+      }
+      .page-rail__signal-node--accent {
+        stroke: #ff6a55 !important;
+        fill: #ff6a55 !important;
+      }
+      .page-rail__title {
+        color: #11131b !important;
+        font-size: 13px !important;
+        font-weight: 700 !important;
+        line-height: 1.25 !important;
+      }
+      .page-rail__note {
+        color: #2b2e3c !important;
+        font-size: 11.5px !important;
+        font-weight: 600 !important;
+        line-height: 1.45 !important;
+      }
+
+      /* High-contrast, bright sidebar styles for DARK backgrounds (#about, #experience, #contact) */
+      .page-rail.is-on-dark {
+        color: #f4f0e7 !important;
+      }
+      .page-rail--right.is-on-dark {
+        border-left: 1.5px solid rgba(255, 255, 255, 0.32) !important;
+      }
+      .page-rail.is-on-dark .page-rail__eyebrow,
+      .page-rail.is-on-dark .page-rail__footer {
+        color: #ffffff !important;
+        font-size: 8.5px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.14em !important;
+      }
+      .page-rail.is-on-dark .page-rail__nav::before {
+        background: rgba(255, 255, 255, 0.25) !important;
+        opacity: 1 !important;
+      }
+      .page-rail.is-on-dark .page-rail__link {
+        color: #dedce6 !important;
+        font-size: 9.5px !important;
+        font-weight: 600 !important;
+        opacity: 1 !important;
+      }
+      .page-rail.is-on-dark .page-rail__link i {
+        border: 1.5px solid #dedce6 !important;
+        background: #1e1f2b !important;
+      }
+      .page-rail.is-on-dark .page-rail__link:hover,
+      .page-rail.is-on-dark .page-rail__link:focus-visible,
+      .page-rail.is-on-dark .page-rail__link[aria-current="location"] {
+        color: #d6ff5c !important;
+        font-weight: 700 !important;
+        text-shadow: 0 0 10px rgba(214, 255, 92, 0.4) !important;
+      }
+      .page-rail.is-on-dark .page-rail__link[aria-current="location"] i {
+        border-color: #d6ff5c !important;
+        background: #d6ff5c !important;
+        box-shadow: 0 0 0 4px rgba(214, 255, 92, 0.35) !important;
+      }
+      .page-rail.is-on-dark .page-rail__counter span:first-child {
+        color: #d6ff5c !important;
+        font-size: 28px !important;
+        font-weight: 700 !important;
+        text-shadow: 0 0 12px rgba(214, 255, 92, 0.35) !important;
+      }
+      .page-rail.is-on-dark .page-rail__counter span:last-child {
+        color: #ffffff !important;
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        opacity: 1 !important;
+      }
+      .page-rail.is-on-dark .page-rail__signal-track {
+        stroke: #d6ff5c !important;
+        stroke-width: 1.75px !important;
+      }
+      .page-rail.is-on-dark .page-rail__signal-node {
+        fill: #1e1f2b !important;
+        stroke: #d6ff5c !important;
+        stroke-width: 1.75px !important;
+      }
+      .page-rail.is-on-dark .page-rail__signal-node--accent {
+        stroke: #ff6a55 !important;
+        fill: #ff6a55 !important;
+      }
+      .page-rail.is-on-dark .page-rail__title {
+        color: #ffffff !important;
+        font-size: 13px !important;
+        font-weight: 700 !important;
+      }
+      .page-rail.is-on-dark .page-rail__note {
+        color: #dedce6 !important;
+        font-size: 11.5px !important;
+        font-weight: 600 !important;
+      }
+    }
   `;
   document.head.appendChild(styleEl);
 
@@ -1313,5 +1485,128 @@ if (typeof module !== 'undefined' && module.exports) {
 
     projectCard.appendChild(drawer);
   });
+
+  /* --------------------------------------------------------------------------
+     8. SIDEBAR BRIGHTNESS & AMBIENT CONTRAST CONTROLLER
+     Dynamically aligns sidebars with actual background luminescence at viewport center
+     Ensures high brightness and crisp legibility on Signal Lab, Preamble, and all sections.
+     -------------------------------------------------------------------------- */
+  function initSidebarBrightnessController() {
+    const rails = document.querySelectorAll('.page-rail');
+    if (!rails.length) return;
+
+    let isUpdating = false;
+
+    function evaluateSidebarBackground() {
+      if (isUpdating) return;
+      isUpdating = true;
+
+      try {
+        const railY = window.innerHeight * 0.5;
+        // Strictly only dark sections on the page
+        const darkSelectors = ['#about', '#experience', '#contact'];
+        let isOverDark = false;
+
+        for (let i = 0; i < darkSelectors.length; i++) {
+          const el = document.querySelector(darkSelectors[i]);
+          if (el) {
+            const rect = el.getBoundingClientRect();
+            // Enter dark mode when the dark element covers the vertical center
+            if (rect.top <= railY + 15 && rect.bottom >= railY - 15) {
+              isOverDark = true;
+              break;
+            }
+          }
+        }
+
+        // Preamble & Signal Lab are explicitly light sections
+        const preambleEl = document.querySelector('.signal-intro-section');
+        const labEl = document.getElementById('signal-lab');
+        let inSignalSection = false;
+
+        if (preambleEl) {
+          const pr = preambleEl.getBoundingClientRect();
+          if (pr.top <= railY + 25 && pr.bottom >= railY - 25) {
+            inSignalSection = true;
+          }
+        }
+        if (!inSignalSection && labEl) {
+          const lr = labEl.getBoundingClientRect();
+          if (lr.top <= railY + 25 && lr.bottom >= railY - 25) {
+            inSignalSection = true;
+          }
+        }
+
+        if (inSignalSection) {
+          isOverDark = false;
+        }
+
+        rails.forEach(function (rail) {
+          const hasDarkClass = rail.classList.contains('is-on-dark');
+          if (hasDarkClass !== isOverDark) {
+            rail.classList.toggle('is-on-dark', isOverDark);
+          }
+        });
+
+        if (inSignalSection) {
+          const railTitle = document.getElementById('page-rail-title');
+          const railNote = document.getElementById('page-rail-note');
+          const pageRailLinks = document.querySelectorAll('.page-rail__link');
+
+          if (railTitle && railTitle.textContent !== 'Signal Lab') {
+            railTitle.textContent = 'Signal Lab';
+          }
+          if (railNote && railNote.textContent !== 'Quantitative signals & active market modeling.') {
+            railNote.textContent = 'Quantitative signals & active market modeling.';
+          }
+
+          // Highlight link 05 cleanly for Signal Lab
+          pageRailLinks.forEach(function (link, idx) {
+            if (idx === 4) {
+              link.setAttribute('aria-current', 'location');
+            } else {
+              link.removeAttribute('aria-current');
+            }
+          });
+        }
+      } finally {
+        isUpdating = false;
+      }
+    }
+
+    let ticking = false;
+    function onScrollOrResize() {
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          evaluateSidebarBackground();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScrollOrResize, { passive: true });
+    window.addEventListener('resize', onScrollOrResize, { passive: true });
+
+    // MutationObserver to reconcile if script.js tries to set is-on-dark on light sections
+    const observer = new MutationObserver(function () {
+      if (!isUpdating) {
+        evaluateSidebarBackground();
+      }
+    });
+
+    rails.forEach(function (rail) {
+      observer.observe(rail, { attributes: true, attributeFilter: ['class'] });
+    });
+
+    // Run immediately on initialization
+    evaluateSidebarBackground();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSidebarBrightnessController);
+  } else {
+    initSidebarBrightnessController();
+  }
 
 }());
