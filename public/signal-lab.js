@@ -92,6 +92,111 @@ if (typeof module !== 'undefined' && module.exports) {
       }
     }
 
+    /* Preamble: What Signal Lab is & Where Jal Excels */
+    .signal-intro-section {
+      padding-block: 40px 10px;
+      background: #ede8dc;
+      color: var(--ink);
+    }
+    .signal-intro-card {
+      padding: clamp(20px, 3.5vw, 36px);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: #fbfcf8;
+      box-shadow: 0 10px 28px rgb(24 37 31 / 4%);
+      margin-bottom: 24px;
+    }
+    .signal-intro-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      margin-bottom: 22px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    .signal-intro-header h2 {
+      font-size: clamp(22px, 2.8vw, 30px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 6px 0 0;
+      color: var(--ink);
+    }
+    .signal-intro-header h2 span {
+      color: var(--violet);
+    }
+    .signal-intro-jump {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      background: var(--forest);
+      color: var(--paper);
+      border-radius: 999px;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 3px 10px rgba(25, 58, 47, 0.18);
+      cursor: pointer;
+    }
+    .signal-intro-jump:hover {
+      background: var(--violet);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .signal-intro-jump__arrow {
+      font-size: 14px;
+      transition: transform 0.2s ease;
+    }
+    .signal-intro-jump:hover .signal-intro-jump__arrow {
+      transform: translateY(3px);
+    }
+    .signal-intro-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+    }
+    .signal-intro-col {
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--ink-soft);
+    }
+    .signal-intro-col__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--violet);
+      letter-spacing: 0.04em;
+      margin-bottom: 10px;
+    }
+    .signal-intro-col__num {
+      padding: 2px 6px;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      background: var(--paper-deep);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--muted);
+    }
+    .signal-intro-col p {
+      margin: 0 0 10px;
+    }
+    .signal-intro-skills {
+      margin: 8px 0 0;
+      padding-left: 18px;
+    }
+    .signal-intro-skills li {
+      margin-bottom: 8px;
+    }
+    .signal-intro-skills strong {
+      color: var(--ink);
+    }
+
     #signal-lab-summary {
       font-size: 12px;
       color: var(--ink-soft);
@@ -288,6 +393,81 @@ if (typeof module !== 'undefined' && module.exports) {
 
   if (panel && controls && tickerSelect && crossoverToggle && volatilityToggle && status && chart && summary && figure) {
     crossoverToggle.checked = true;
+
+    // Create and insert introductory section before Signal Lab explaining what it is & what Jal is best at
+    const signalLabSec = document.getElementById('signal-lab');
+    if (signalLabSec && !document.getElementById('signal-about')) {
+      const introSection = document.createElement('section');
+      introSection.className = 'signal-intro-section';
+      introSection.id = 'signal-about';
+      introSection.setAttribute('aria-labelledby', 'signal-about-title');
+      introSection.innerHTML = `
+        <div class="container">
+          <div class="section-bridge section-bridge--violet" style="margin-bottom: 24px;" aria-hidden="true">
+            <svg viewBox="0 0 1200 72" preserveAspectRatio="none" focusable="false">
+              <path d="M0 36 H190 L210 24 H430 L450 36 H750 L770 48 H990 L1010 36 H1200"/>
+              <circle cx="90" cy="36" r="4"/><circle cx="600" cy="36" r="5"/><circle cx="1110" cy="36" r="4"/>
+            </svg>
+            <div class="section-bridge__inner">
+              <div class="section-bridge__rail"><span>03.5 / MARKETS × AI</span><b aria-hidden="true">››</b></div>
+              <p class="section-bridge__next"><span>FOUNDATION</span><strong>What is Signal Lab &amp; Where Jal Excels.</strong></p>
+            </div>
+          </div>
+
+          <div class="signal-intro-card">
+            <div class="signal-intro-header">
+              <div>
+                <p class="eyebrow">QUANTITATIVE FOUNDATION / MARKETS &amp; AI</p>
+                <h2 id="signal-about-title">Bridging financial signals with <span>predictive intelligence.</span></h2>
+              </div>
+              <a class="signal-intro-jump" href="#signal-lab" id="signal-jump-btn">
+                <span>Explore Live Signal Lab</span>
+                <span class="signal-intro-jump__arrow" aria-hidden="true">↓</span>
+              </a>
+            </div>
+
+            <div class="signal-intro-grid">
+              <div class="signal-intro-col">
+                <div class="signal-intro-col__eyebrow">
+                  <span class="signal-intro-col__num">01</span>
+                  <strong>WHAT SIGNAL LAB ACTUALLY IS</strong>
+                </div>
+                <p>Signal Lab is an educational, client-side quantitative laboratory demonstrating how raw market price series are transformed into structured algorithmic features.</p>
+                <p>Instead of relying on remote libraries or black-box APIs, it computes <strong>trailing moving-average crossovers</strong> (20-day vs. 50-day SMA) and <strong>20-day rolling log-return volatility</strong> entirely in the browser with verified mathematical precision and zero network latency.</p>
+              </div>
+
+              <div class="signal-intro-col">
+                <div class="signal-intro-col__eyebrow">
+                  <span class="signal-intro-col__num">02</span>
+                  <strong>WHAT JAL IS BEST AT DOING</strong>
+                </div>
+                <p>Jal’s edge lies at the intersection of <strong>quantitative finance, data modeling, and applied systems engineering</strong>:</p>
+                <ul class="signal-intro-skills">
+                  <li><strong>Signal Extraction &amp; Mathematical Modeling:</strong> Formulating clean momentum, mean reversion, and volatility dispersion models from raw market data.</li>
+                  <li><strong>Institutional Risk &amp; Macro Regimes:</strong> Grounded in the <em>Bank of America Global Markets simulation</em>—evaluating portfolio beta, systemic hedging, and equity factor regimes.</li>
+                  <li><strong>Full-Stack Product Engineering:</strong> Building performant microservices and interactive browser interfaces (FastAPI, Python, Supabase, React) that bring analytical concepts to life.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      signalLabSec.parentNode.insertBefore(introSection, signalLabSec);
+
+      const jumpBtn = introSection.querySelector('#signal-jump-btn');
+      if (jumpBtn) {
+        jumpBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          signalLabSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          panel.style.transition = 'box-shadow 0.4s ease';
+          panel.style.boxShadow = '0 0 0 3px var(--violet)';
+          setTimeout(function () {
+            panel.style.boxShadow = '';
+          }, 1400);
+        });
+      }
+    }
 
     // Restructure into 2 semantic columns: .signal-lab__sidebar (left) & .signal-lab__chart-col (right)
     const sidebar = document.createElement('div');
