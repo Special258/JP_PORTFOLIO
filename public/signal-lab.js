@@ -696,6 +696,11 @@ if (typeof module !== 'undefined' && module.exports) {
       opacity: 0.65 !important;
       pointer-events: none !important;
     }
+    /* Symmetrical corner framing: eliminate redundant second bracket in top-right corner
+       so technical framing marks maintain a balanced 1:1 diagonal symmetry (1 at top-right, 1 at bottom-left) */
+    .hero--editorial .hero__frame-line {
+      display: none !important;
+    }
     .hero--editorial .hero__copy {
       position: relative !important;
       z-index: 3 !important;
