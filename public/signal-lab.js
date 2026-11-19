@@ -66,26 +66,18 @@ if (typeof module !== 'undefined' && module.exports) {
       .signal-lab__panel {
         display: grid !important;
         grid-template-columns: minmax(360px, 1fr) minmax(460px, 1.45fr) !important;
-        grid-template-areas:
-          "sidebar chart"
-          "footer footer" !important;
         gap: 28px !important;
         align-items: start !important;
       }
       .signal-lab__sidebar {
-        grid-area: sidebar;
         display: flex;
         flex-direction: column;
         gap: 14px;
       }
       .signal-lab__chart-col {
-        grid-area: chart;
         display: flex;
         flex-direction: column;
-        gap: 14px;
-      }
-      .signal-lab__note {
-        grid-area: footer;
+        gap: 12px;
       }
       .signal-lab__controls {
         margin: 0 0 8px !important;
@@ -93,6 +85,21 @@ if (typeof module !== 'undefined' && module.exports) {
       .signal-lab__status {
         margin: 0 !important;
       }
+      .signal-lab__note {
+        margin-top: 12px !important;
+        padding-top: 14px !important;
+        border-top: 1px solid var(--line) !important;
+      }
+    }
+
+    #signal-lab-summary {
+      font-size: 12px;
+      color: var(--ink-soft);
+      line-height: 1.5;
+      padding: 8px 12px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 4px;
     }
 
     .signal-market-badge {
@@ -306,16 +313,15 @@ if (typeof module !== 'undefined' && module.exports) {
     thesisCard.id = 'signal-thesis-card';
     sidebar.appendChild(thesisCard);
 
-    sidebar.appendChild(summary);
-
-    // Move figure into chartCol
+    // Move figure, summary, and note into chartCol (right section) to occupy empty space
     chartCol.appendChild(figure);
+    chartCol.appendChild(summary);
+    if (note) chartCol.appendChild(note);
 
-    // Append to panel before note
+    // Assemble panel side-by-side
     panel.replaceChildren();
     panel.appendChild(sidebar);
     panel.appendChild(chartCol);
-    if (note) panel.appendChild(note);
 
     // Create fast-select chips container
     const chipsContainer = document.createElement('div');
