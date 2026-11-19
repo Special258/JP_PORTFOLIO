@@ -696,6 +696,13 @@ if (typeof module !== 'undefined' && module.exports) {
       opacity: 0.65 !important;
       pointer-events: none !important;
     }
+    /* Clean corner framing: remove redundant outer frame lines and tick marks from the hero frame
+       so both the top-right and bottom-left have exactly ONE clean, matching technical bracket */
+    .hero--editorial .hero__frame-line,
+    .hero--editorial .signal-tick,
+    .hero--editorial .hero__abstract-cross {
+      display: none !important;
+    }
     .hero--editorial .hero__copy {
       position: relative !important;
       z-index: 3 !important;
@@ -1871,6 +1878,12 @@ if (typeof module !== 'undefined' && module.exports) {
     if (oldChart) {
       oldChart.style.display = 'none';
     }
+
+    // Ensure redundant outer frame marks in the top-right are hidden
+    const redundantMarks = document.querySelectorAll('.hero--editorial .hero__frame-line, .hero--editorial .signal-tick, .hero--editorial .hero__abstract-cross');
+    redundantMarks.forEach(function (el) {
+      el.style.display = 'none';
+    });
 
     // Guard against duplicate injection
     if (heroCard.querySelector('.hero-intelligence-engine')) return;
