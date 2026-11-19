@@ -99,13 +99,33 @@ if (typeof module !== 'undefined' && module.exports) {
       color: var(--ink);
     }
     .signal-intro-card {
-      padding: clamp(24px, 4vw, 40px);
+      padding: clamp(24px, 4vw, 42px);
       border: 1px solid var(--line);
-      border-radius: 6px;
+      border-radius: 8px;
       background: linear-gradient(145deg, #fffdf8 0%, #fbf9f2 100%);
-      box-shadow: 0 12px 32px rgb(24 37 31 / 5%), 0 1px 3px rgb(24 37 31 / 3%);
+      box-shadow: 0 16px 40px rgb(24 37 31 / 5%), 0 1px 3px rgb(24 37 31 / 3%);
       margin-bottom: 24px;
       position: relative;
+      overflow: hidden;
+    }
+    .signal-intro-art {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+    .signal-intro-art svg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .signal-intro-content {
+      position: relative;
+      z-index: 1;
     }
     .signal-intro-header {
       display: flex;
@@ -115,33 +135,35 @@ if (typeof module !== 'undefined' && module.exports) {
       gap: 20px;
       margin-bottom: 28px;
       padding-bottom: 22px;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid rgba(217, 205, 184, 0.7);
     }
     .signal-intro-tag {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 4px 11px;
+      padding: 4px 12px;
       border-radius: 999px;
-      background: var(--paper-deep);
+      background: rgba(232, 222, 203, 0.75);
       border: 1px solid var(--line);
       font-family: var(--mono);
       font-size: 11px;
       color: var(--forest-light);
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       font-weight: 600;
       margin-bottom: 8px;
+      backdrop-filter: blur(4px);
     }
     .signal-intro-tag__dot {
       width: 6px;
       height: 6px;
       border-radius: 50%;
       background: var(--violet);
-      box-shadow: 0 0 6px rgba(110, 76, 199, 0.4);
+      box-shadow: 0 0 7px rgba(110, 76, 199, 0.6);
+      animation: pulse-ring 2s infinite;
     }
     .signal-intro-header h2 {
-      font-size: clamp(23px, 3vw, 32px);
+      font-size: clamp(23px, 3.2vw, 34px);
       font-weight: 700;
       line-height: 1.25;
       letter-spacing: -0.025em;
@@ -159,26 +181,26 @@ if (typeof module !== 'undefined' && module.exports) {
       display: inline-flex;
       align-items: center;
       gap: 11px;
-      padding: 11px 22px;
+      padding: 12px 24px;
       background: var(--forest);
       color: var(--lime);
       border-radius: 999px;
-      border: 1px solid rgba(227, 203, 150, 0.25);
+      border: 1px solid rgba(227, 203, 150, 0.3);
       font-family: var(--mono);
       font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.02em;
       text-decoration: none;
       transition: all 0.25s cubic-bezier(0.2, 0.7, 0.2, 1);
-      box-shadow: 0 4px 14px rgba(25, 58, 47, 0.2);
+      box-shadow: 0 4px 16px rgba(25, 58, 47, 0.25);
       cursor: pointer;
     }
     .signal-intro-jump:hover {
       background: var(--violet);
       color: #fffdf6;
-      border-color: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.35);
       transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(110, 76, 199, 0.35);
+      box-shadow: 0 8px 22px rgba(110, 76, 199, 0.4);
     }
     .signal-intro-jump__arrow {
       font-size: 15px;
@@ -193,16 +215,24 @@ if (typeof module !== 'undefined' && module.exports) {
       gap: 24px;
     }
     .signal-intro-panel {
-      padding: 22px 24px;
-      background: #ffffff;
-      border: 1px solid var(--line);
-      border-radius: 5px;
-      box-shadow: 0 4px 12px rgba(25, 58, 47, 0.03);
+      padding: 24px 26px;
+      background: rgba(255, 253, 246, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(217, 205, 184, 0.85);
+      border-radius: 6px;
+      box-shadow: 0 8px 24px rgba(25, 58, 47, 0.04);
       display: flex;
       flex-direction: column;
       gap: 14px;
       position: relative;
       overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .signal-intro-panel:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(25, 58, 47, 0.08);
+      border-color: rgba(110, 76, 199, 0.4);
     }
     .signal-intro-panel--concept::before {
       content: '';
@@ -263,6 +293,28 @@ if (typeof module !== 'undefined' && module.exports) {
     .signal-intro-panel p strong {
       color: var(--ink);
     }
+    .signal-intro-pills {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .signal-intro-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 11px;
+      border-radius: 4px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      font-size: 12px;
+      color: var(--ink-soft);
+      font-family: var(--mono);
+    }
+    .signal-intro-pill strong {
+      color: var(--violet);
+      font-weight: 600;
+    }
     .signal-intro-traits {
       display: flex;
       flex-direction: column;
@@ -270,7 +322,7 @@ if (typeof module !== 'undefined' && module.exports) {
       margin-top: 4px;
     }
     .signal-intro-trait {
-      padding: 10px 12px;
+      padding: 11px 13px;
       background: var(--paper);
       border-left: 3px solid var(--forest-light);
       border-radius: 0 4px 4px 0;
@@ -512,47 +564,102 @@ if (typeof module !== 'undefined' && module.exports) {
           </div>
 
           <div class="signal-intro-card">
-            <div class="signal-intro-header">
-              <div>
-                <div class="signal-intro-tag">
-                  <span class="signal-intro-tag__dot"></span>
-                  <span>MARKET PERSPECTIVE &middot; SIGNAL LAB</span>
-                </div>
-                <h2 id="signal-about-title">Looking past daily noise to find <span class="serif-accent">the market's real rhythm.</span></h2>
-              </div>
-              <a class="signal-intro-jump" href="#signal-lab" id="signal-jump-btn">
-                <span>Explore Live Market Lab</span>
-                <span class="signal-intro-jump__arrow" aria-hidden="true">&darr;</span>
-              </a>
+            <div class="signal-intro-art" aria-hidden="true">
+              <svg viewBox="0 0 1200 480" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <defs>
+                  <radialGradient id="art-glow-violet" cx="0" cy="0" r="1" gradientTransform="matrix(0 260 -450 0 940 220)" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#6e4cc7" stop-opacity="0.16"/>
+                    <stop offset="0.6" stop-color="#6e4cc7" stop-opacity="0.05"/>
+                    <stop offset="1" stop-color="#6e4cc7" stop-opacity="0"/>
+                  </radialGradient>
+                  <radialGradient id="art-glow-lime" cx="0" cy="0" r="1" gradientTransform="matrix(0 220 -360 0 180 340)" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#c9ad72" stop-opacity="0.22"/>
+                    <stop offset="0.7" stop-color="#c9ad72" stop-opacity="0.04"/>
+                    <stop offset="1" stop-color="#c9ad72" stop-opacity="0"/>
+                  </radialGradient>
+                  <linearGradient id="art-ribbon-1" x1="0" y1="420" x2="1200" y2="80" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#bd785a" stop-opacity="0.12"/>
+                    <stop offset="0.45" stop-color="#6e4cc7" stop-opacity="0.3"/>
+                    <stop offset="1" stop-color="#2f5945" stop-opacity="0.22"/>
+                  </linearGradient>
+                  <pattern id="art-dotmatrix" width="36" height="36" patternUnits="userSpaceOnUse">
+                    <circle cx="2" cy="2" r="1" fill="#193a2f" fill-opacity="0.04"/>
+                  </pattern>
+                </defs>
+                <rect width="1200" height="480" fill="url(#art-dotmatrix)"/>
+                <ellipse cx="940" cy="220" rx="450" ry="260" fill="url(#art-glow-violet)"/>
+                <ellipse cx="180" cy="340" rx="360" ry="220" fill="url(#art-glow-lime)"/>
+
+                <path d="M-50 400 C160 360 280 470 480 390 C680 310 820 150 1250 180" stroke="url(#art-ribbon-1)" stroke-width="46" stroke-linecap="round" opacity="0.38"/>
+                <path d="M-30 410 C180 370 300 460 500 380 C700 300 840 140 1230 160" stroke="#6e4cc7" stroke-opacity="0.45" stroke-width="2.2" fill="none"/>
+                <path d="M-20 440 C200 400 310 490 520 400 C720 320 860 180 1240 200" stroke="#2f5945" stroke-opacity="0.35" stroke-width="1.8" stroke-dasharray="5 10" fill="none"/>
+                <path d="M0 470 C220 440 330 520 550 430 C740 360 880 230 1250 240" stroke="#bd785a" stroke-opacity="0.3" stroke-width="1.5" fill="none"/>
+
+                <circle cx="500" cy="380" r="5" fill="#fffdf6" stroke="#6e4cc7" stroke-width="2"/>
+                <circle cx="500" cy="380" r="20" stroke="#6e4cc7" stroke-opacity="0.22" stroke-width="1"/>
+                <circle cx="840" cy="140" r="6" fill="#fffdf6" stroke="#2f5945" stroke-width="2.5"/>
+                <circle cx="840" cy="140" r="26" stroke="#2f5945" stroke-opacity="0.2" stroke-width="1"/>
+                <path d="M810 115 h60 v40" stroke="#193a2f" stroke-opacity="0.14" stroke-width="1" fill="none"/>
+                <path d="M80 60 h30 v30" stroke="#193a2f" stroke-opacity="0.12" stroke-width="1" fill="none"/>
+                <path d="M1120 420 h30 v30" stroke="#193a2f" stroke-opacity="0.12" stroke-width="1" fill="none"/>
+                <text x="820" y="108" font-family="'DM Mono', monospace" font-size="9" fill="#53645a" opacity="0.65" letter-spacing="0.08em">MOMENTUM INFLECTION &middot; SPREAD &gt; 0</text>
+                <text x="470" y="420" font-family="'DM Mono', monospace" font-size="9" fill="#53645a" opacity="0.65" letter-spacing="0.08em">20D / 50D HARMONIC HARVEST</text>
+              </svg>
             </div>
 
-            <div class="signal-intro-grid">
-              <div class="signal-intro-panel signal-intro-panel--concept">
-                <div class="signal-intro-panel__header">
-                  <span class="signal-intro-panel__badge">01 / CONCEPT</span>
-                  <h3 class="signal-intro-panel__title">Why Simple Signals Matter <span>&mdash; A window into market flow</span></h3>
+            <div class="signal-intro-content">
+              <div class="signal-intro-header">
+                <div>
+                  <div class="signal-intro-tag">
+                    <span class="signal-intro-tag__dot"></span>
+                    <span>MARKET PERSPECTIVE &middot; SIGNAL LAB</span>
+                  </div>
+                  <h2 id="signal-about-title">Looking past daily noise to find <span class="serif-accent">the market's real rhythm.</span></h2>
                 </div>
-                <p>Stock markets can feel like an endless wall of hype, frantic ticks, and conflicting commentary. Signal Lab was built around a much simpler philosophy: when you cut through the noise, <strong>price trends and volatility tell the truest story</strong>.</p>
-                <p>By isolating <strong>trend direction</strong> (the 20-day &amp; 50-day moving average spread) and <strong>market tension</strong> (rolling 20-day volatility), this sandbox provides an uncluttered, grounded look at where market conviction actually sits.</p>
+                <a class="signal-intro-jump" href="#signal-lab" id="signal-jump-btn">
+                  <span>Explore Live Market Lab</span>
+                  <span class="signal-intro-jump__arrow" aria-hidden="true">&darr;</span>
+                </a>
               </div>
 
-              <div class="signal-intro-panel signal-intro-panel--perspective">
-                <div class="signal-intro-panel__header">
-                  <span class="signal-intro-panel__badge">02 / THE EYE</span>
-                  <h3 class="signal-intro-panel__title">What Jal Does Differently <span>&mdash; Curiosity, patience &amp; visual clarity</span></h3>
+              <div class="signal-intro-grid">
+                <div class="signal-intro-panel signal-intro-panel--concept">
+                  <div class="signal-intro-panel__header">
+                    <span class="signal-intro-panel__badge">01 / CONCEPT</span>
+                    <h3 class="signal-intro-panel__title">Why Simple Signals Matter <span>&mdash; A window into market flow</span></h3>
+                  </div>
+                  <p>Stock markets can feel like an endless wall of hype, frantic ticks, and conflicting commentary. Signal Lab was built around a much simpler philosophy: when you cut through the noise, <strong>price trends and volatility tell the truest story</strong>.</p>
+                  <p>By isolating <strong>trend direction</strong> (the 20-day &amp; 50-day moving average spread) and <strong>market tension</strong> (rolling 20-day volatility), this sandbox provides an uncluttered, grounded look at where market conviction actually sits.</p>
+                  <div class="signal-intro-pills">
+                    <div class="signal-intro-pill">
+                      <strong>20 / 50 SMA Spread</strong>
+                      <span>&rarr; Identifies structural momentum vs. erratic noise</span>
+                    </div>
+                    <div class="signal-intro-pill">
+                      <strong>20-Day Rolling Vol</strong>
+                      <span>&rarr; Measures market compression before expansion</span>
+                    </div>
+                  </div>
                 </div>
-                <div class="signal-intro-traits">
-                  <div class="signal-intro-trait">
-                    <strong>Observing Market Psychology &amp; Rhythm</strong>
-                    <span>Following market leaders with keen curiosity&mdash;watching how macro sentiment, catalysts, and momentum inflection points leave their footprint on price action.</span>
+
+                <div class="signal-intro-panel signal-intro-panel--perspective">
+                  <div class="signal-intro-panel__header">
+                    <span class="signal-intro-panel__badge">02 / THE EYE</span>
+                    <h3 class="signal-intro-panel__title">What Jal Does Differently <span>&mdash; Curiosity, patience &amp; visual clarity</span></h3>
                   </div>
-                  <div class="signal-intro-trait">
-                    <strong>Focusing on What Actually Matters</strong>
-                    <span>Skipping the clutter of dozens of lagging indicators to focus on the core pulse: trend direction, moving average support, and volatility compression.</span>
-                  </div>
-                  <div class="signal-intro-trait">
-                    <strong>Building What I Want to See</strong>
-                    <span>Translating market observations into responsive, zero-delay visual tools&mdash;turning market curiosity into an intuitive experience anyone can explore.</span>
+                  <div class="signal-intro-traits">
+                    <div class="signal-intro-trait">
+                      <strong>Observing Market Psychology &amp; Rhythm</strong>
+                      <span>Following market leaders with keen curiosity&mdash;watching how macro sentiment, catalysts, and momentum inflection points leave their footprint on price action.</span>
+                    </div>
+                    <div class="signal-intro-trait">
+                      <strong>Focusing on What Actually Matters</strong>
+                      <span>Skipping the clutter of dozens of lagging indicators to focus on the core pulse: trend direction, moving average support, and volatility compression.</span>
+                    </div>
+                    <div class="signal-intro-trait">
+                      <strong>Building What I Want to See</strong>
+                      <span>Translating market observations into responsive, zero-delay visual tools&mdash;turning market curiosity into an intuitive experience anyone can explore.</span>
+                    </div>
                   </div>
                 </div>
               </div>
