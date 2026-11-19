@@ -92,109 +92,206 @@ if (typeof module !== 'undefined' && module.exports) {
       }
     }
 
-    /* Preamble: What Signal Lab is & Where Jal Excels */
+    /* Preamble: High-Craft Editorial Intro (What Signal Lab is & What Jal Does Differently) */
     .signal-intro-section {
-      padding-block: 40px 10px;
+      padding-block: 44px 12px;
       background: #ede8dc;
       color: var(--ink);
     }
     .signal-intro-card {
-      padding: clamp(20px, 3.5vw, 36px);
+      padding: clamp(24px, 4vw, 40px);
       border: 1px solid var(--line);
-      border-radius: 4px;
-      background: #fbfcf8;
-      box-shadow: 0 10px 28px rgb(24 37 31 / 4%);
+      border-radius: 6px;
+      background: linear-gradient(145deg, #fffdf8 0%, #fbf9f2 100%);
+      box-shadow: 0 12px 32px rgb(24 37 31 / 5%), 0 1px 3px rgb(24 37 31 / 3%);
       margin-bottom: 24px;
+      position: relative;
     }
     .signal-intro-header {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: flex-end;
-      gap: 16px;
-      margin-bottom: 22px;
-      padding-bottom: 18px;
+      gap: 20px;
+      margin-bottom: 28px;
+      padding-bottom: 22px;
       border-bottom: 1px solid var(--line);
     }
+    .signal-intro-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 11px;
+      border-radius: 999px;
+      background: var(--paper-deep);
+      border: 1px solid var(--line);
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--forest-light);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .signal-intro-tag__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--violet);
+      box-shadow: 0 0 6px rgba(110, 76, 199, 0.4);
+    }
     .signal-intro-header h2 {
-      font-size: clamp(22px, 2.8vw, 30px);
+      font-size: clamp(23px, 3vw, 32px);
       font-weight: 700;
-      letter-spacing: -0.02em;
-      margin: 6px 0 0;
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+      margin: 4px 0 0;
       color: var(--ink);
     }
-    .signal-intro-header h2 span {
-      color: var(--violet);
+    .signal-intro-header h2 .serif-accent {
+      font-family: var(--display);
+      font-style: italic;
+      font-weight: 500;
+      color: var(--forest-light);
+      display: inline;
     }
     .signal-intro-jump {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 10px 18px;
+      gap: 11px;
+      padding: 11px 22px;
       background: var(--forest);
-      color: var(--paper);
+      color: var(--lime);
       border-radius: 999px;
+      border: 1px solid rgba(227, 203, 150, 0.25);
       font-family: var(--mono);
       font-size: 12px;
       font-weight: 600;
+      letter-spacing: 0.02em;
       text-decoration: none;
-      transition: all 0.2s ease;
-      box-shadow: 0 3px 10px rgba(25, 58, 47, 0.18);
+      transition: all 0.25s cubic-bezier(0.2, 0.7, 0.2, 1);
+      box-shadow: 0 4px 14px rgba(25, 58, 47, 0.2);
       cursor: pointer;
     }
     .signal-intro-jump:hover {
       background: var(--violet);
-      color: #fff;
+      color: #fffdf6;
+      border-color: rgba(255, 255, 255, 0.3);
       transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(110, 76, 199, 0.35);
     }
     .signal-intro-jump__arrow {
-      font-size: 14px;
-      transition: transform 0.2s ease;
+      font-size: 15px;
+      transition: transform 0.25s ease;
     }
     .signal-intro-jump:hover .signal-intro-jump__arrow {
       transform: translateY(3px);
     }
     .signal-intro-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 28px;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
     }
-    .signal-intro-col {
-      font-size: 13px;
-      line-height: 1.65;
-      color: var(--ink-soft);
+    .signal-intro-panel {
+      padding: 22px 24px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      box-shadow: 0 4px 12px rgba(25, 58, 47, 0.03);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
     }
-    .signal-intro-col__eyebrow {
+    .signal-intro-panel--concept::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--forest-light), var(--lime-dark));
+    }
+    .signal-intro-panel--perspective::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--violet), var(--coral));
+    }
+    .signal-intro-panel__header {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--violet);
-      letter-spacing: 0.04em;
-      margin-bottom: 10px;
     }
-    .signal-intro-col__num {
-      padding: 2px 6px;
-      border: 1px solid var(--line);
-      border-radius: 3px;
-      background: var(--paper-deep);
-      font-size: 10px;
+    .signal-intro-panel__badge {
+      font-family: var(--mono);
+      font-size: 11px;
       font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 3px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      color: var(--violet);
+    }
+    .signal-intro-panel__title {
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .signal-intro-panel__title span {
+      font-family: var(--display);
+      font-style: italic;
+      font-weight: 500;
+      font-size: 14px;
       color: var(--muted);
     }
-    .signal-intro-col p {
-      margin: 0 0 10px;
+    .signal-intro-panel p {
+      margin: 0;
+      font-size: 13.5px;
+      line-height: 1.68;
+      color: var(--ink-soft);
     }
-    .signal-intro-skills {
-      margin: 8px 0 0;
-      padding-left: 18px;
-    }
-    .signal-intro-skills li {
-      margin-bottom: 8px;
-    }
-    .signal-intro-skills strong {
+    .signal-intro-panel p strong {
       color: var(--ink);
+    }
+    .signal-intro-traits {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .signal-intro-trait {
+      padding: 10px 12px;
+      background: var(--paper);
+      border-left: 3px solid var(--forest-light);
+      border-radius: 0 4px 4px 0;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+    }
+    .signal-intro-trait:nth-child(2) {
+      border-left-color: var(--violet);
+    }
+    .signal-intro-trait:nth-child(3) {
+      border-left-color: var(--coral);
+    }
+    .signal-intro-trait strong {
+      display: block;
+      font-family: var(--display);
+      font-style: italic;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--ink);
+      margin-bottom: 2px;
     }
 
     #signal-lab-summary {
@@ -417,36 +514,47 @@ if (typeof module !== 'undefined' && module.exports) {
           <div class="signal-intro-card">
             <div class="signal-intro-header">
               <div>
-                <p class="eyebrow">QUANTITATIVE FOUNDATION / MARKETS &amp; AI</p>
-                <h2 id="signal-about-title">Bridging financial signals with <span>predictive intelligence.</span></h2>
+                <div class="signal-intro-tag">
+                  <span class="signal-intro-tag__dot"></span>
+                  <span>MARKET PERSPECTIVE &middot; SIGNAL LAB</span>
+                </div>
+                <h2 id="signal-about-title">Looking past daily noise to find <span class="serif-accent">the market's real rhythm.</span></h2>
               </div>
               <a class="signal-intro-jump" href="#signal-lab" id="signal-jump-btn">
-                <span>Explore Live Signal Lab</span>
-                <span class="signal-intro-jump__arrow" aria-hidden="true">↓</span>
+                <span>Explore Live Market Lab</span>
+                <span class="signal-intro-jump__arrow" aria-hidden="true">&darr;</span>
               </a>
             </div>
 
             <div class="signal-intro-grid">
-              <div class="signal-intro-col">
-                <div class="signal-intro-col__eyebrow">
-                  <span class="signal-intro-col__num">01</span>
-                  <strong>WHAT SIGNAL LAB ACTUALLY IS</strong>
+              <div class="signal-intro-panel signal-intro-panel--concept">
+                <div class="signal-intro-panel__header">
+                  <span class="signal-intro-panel__badge">01 / CONCEPT</span>
+                  <h3 class="signal-intro-panel__title">Why Simple Signals Matter <span>&mdash; A window into market flow</span></h3>
                 </div>
-                <p>Signal Lab is an educational, client-side quantitative laboratory demonstrating how raw market price series are transformed into structured algorithmic features.</p>
-                <p>Instead of relying on remote libraries or black-box APIs, it computes <strong>trailing moving-average crossovers</strong> (20-day vs. 50-day SMA) and <strong>20-day rolling log-return volatility</strong> entirely in the browser with verified mathematical precision and zero network latency.</p>
+                <p>Stock markets can feel like an endless wall of hype, frantic ticks, and conflicting commentary. Signal Lab was built around a much simpler philosophy: when you cut through the noise, <strong>price trends and volatility tell the truest story</strong>.</p>
+                <p>By isolating <strong>trend direction</strong> (the 20-day &amp; 50-day moving average spread) and <strong>market tension</strong> (rolling 20-day volatility), this sandbox provides an uncluttered, grounded look at where market conviction actually sits.</p>
               </div>
 
-              <div class="signal-intro-col">
-                <div class="signal-intro-col__eyebrow">
-                  <span class="signal-intro-col__num">02</span>
-                  <strong>WHAT JAL IS BEST AT DOING</strong>
+              <div class="signal-intro-panel signal-intro-panel--perspective">
+                <div class="signal-intro-panel__header">
+                  <span class="signal-intro-panel__badge">02 / THE EYE</span>
+                  <h3 class="signal-intro-panel__title">What Jal Does Differently <span>&mdash; Curiosity, patience &amp; visual clarity</span></h3>
                 </div>
-                <p>Jal’s edge lies at the intersection of <strong>quantitative finance, data modeling, and applied systems engineering</strong>:</p>
-                <ul class="signal-intro-skills">
-                  <li><strong>Signal Extraction &amp; Mathematical Modeling:</strong> Formulating clean momentum, mean reversion, and volatility dispersion models from raw market data.</li>
-                  <li><strong>Institutional Risk &amp; Macro Regimes:</strong> Grounded in the <em>Bank of America Global Markets simulation</em>—evaluating portfolio beta, systemic hedging, and equity factor regimes.</li>
-                  <li><strong>Full-Stack Product Engineering:</strong> Building performant microservices and interactive browser interfaces (FastAPI, Python, Supabase, React) that bring analytical concepts to life.</li>
-                </ul>
+                <div class="signal-intro-traits">
+                  <div class="signal-intro-trait">
+                    <strong>Observing Market Psychology &amp; Rhythm</strong>
+                    <span>Following market leaders with keen curiosity&mdash;watching how macro sentiment, catalysts, and momentum inflection points leave their footprint on price action.</span>
+                  </div>
+                  <div class="signal-intro-trait">
+                    <strong>Focusing on What Actually Matters</strong>
+                    <span>Skipping the clutter of dozens of lagging indicators to focus on the core pulse: trend direction, moving average support, and volatility compression.</span>
+                  </div>
+                  <div class="signal-intro-trait">
+                    <strong>Building What I Want to See</strong>
+                    <span>Translating market observations into responsive, zero-delay visual tools&mdash;turning market curiosity into an intuitive experience anyone can explore.</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
