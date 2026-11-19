@@ -702,23 +702,6 @@ if (typeof module !== 'undefined' && module.exports) {
     .hero--editorial .hero__abstract-cross {
       display: none !important;
     }
-    /* Precision Card Corner Bracket: properly aligned and hugging the card's bottom-left corner */
-    .hero-card-bracket {
-      position: absolute;
-      width: 48px;
-      height: 48px;
-      pointer-events: none;
-      z-index: 2;
-    }
-    .hero-card-bracket--bl {
-      bottom: -10px;
-      left: -10px;
-    }
-    .hero-card-bracket svg {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
     .hero--editorial .hero__copy {
       position: relative !important;
       z-index: 3 !important;
@@ -739,7 +722,7 @@ if (typeof module !== 'undefined' && module.exports) {
 
     /* --------------------------------------------------------------------------
        HERO CARD: INTELLIGENT MULTI-LAYER SIGNAL & NEURAL FEATURE ENGINE
-       Replaces generic static scatter plot with state-of-the-art interactive graphical representation
+       Generously proportioned, prominent visual representation in line with the tagline
        -------------------------------------------------------------------------- */
     .hero--editorial .hero-art {
       width: 100% !important;
@@ -747,19 +730,19 @@ if (typeof module !== 'undefined' && module.exports) {
       margin: 0 !important;
     }
     .hero--editorial .hero-art__card {
-      padding: clamp(16px, 2vw, 22px) clamp(18px, 2.4vw, 26px) 14px !important;
-      border-radius: 12px !important;
+      padding: clamp(22px, 2.5vw, 30px) clamp(22px, 2.8vw, 32px) 20px !important;
+      border-radius: 14px !important;
     }
     .hero--editorial .hero-art__heading {
-      margin-top: 14px !important;
-      font-size: clamp(20px, 2.3vw, 28px) !important;
+      margin-top: 18px !important;
+      font-size: clamp(24px, 2.8vw, 34px) !important;
       line-height: 1.15 !important;
     }
     .hero-intelligence-engine {
       display: flex;
       flex-direction: column;
-      gap: 7px !important;
-      margin-top: 8px !important;
+      gap: 10px !important;
+      margin-top: 12px !important;
       width: 100%;
     }
     .engine-nav-bar {
@@ -829,17 +812,17 @@ if (typeof module !== 'undefined' && module.exports) {
     .engine-canvas-wrap {
       position: relative;
       width: 100%;
-      height: 138px !important;
+      height: 172px !important;
       background: radial-gradient(ellipse at 50% 50%, rgba(31, 35, 52, 0.65) 0%, rgba(20, 23, 33, 0.95) 100%);
       border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 6px !important;
+      border-radius: 8px !important;
       overflow: hidden;
       box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08), 0 8px 24px rgba(0, 0, 0, 0.25);
     }
     .hero-art__bottom {
-      padding-top: 8px !important;
-      margin-top: 2px !important;
-      font-size: 7.5px !important;
+      padding-top: 12px !important;
+      margin-top: 6px !important;
+      font-size: 8.5px !important;
     }
     .hero--editorial .hero-art__note {
       right: -8px !important;
@@ -2156,30 +2139,14 @@ if (typeof module !== 'undefined' && module.exports) {
     });
   }
 
-  function initHeroCardBrackets() {
-    var heroArt = document.querySelector('.hero-art');
-    if (!heroArt || heroArt.querySelector('.hero-card-bracket--bl')) return;
-
-    var blBracket = document.createElement('div');
-    blBracket.className = 'hero-card-bracket hero-card-bracket--bl';
-    blBracket.setAttribute('aria-hidden', 'true');
-    blBracket.innerHTML = '<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-      '<path d="M2 0v46h46" stroke="#F4F0E7" stroke-opacity=".36" stroke-width="2"/>' +
-    '</svg>';
-
-    heroArt.appendChild(blBracket);
-  }
-
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       initSidebarBrightnessController();
       initHeroIntelligenceEngine();
-      initHeroCardBrackets();
     });
   } else {
     initSidebarBrightnessController();
     initHeroIntelligenceEngine();
-    initHeroCardBrackets();
   }
 
 
