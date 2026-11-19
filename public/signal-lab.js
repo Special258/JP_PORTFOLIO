@@ -687,7 +687,7 @@ if (typeof module !== 'undefined' && module.exports) {
        Fixes abstract background image interference behind hero typography
        -------------------------------------------------------------------------- */
     .hero--editorial {
-      background-position: right -76px calc(50% - 26px), 88% 20%, 8% 95%, center !important;
+      background-position: right -60px center, 88% 20%, 8% 95%, center !important;
       background-size: min(65%, 820px) auto, auto, auto, cover !important;
     }
     .hero--editorial .hero__abstract {
@@ -696,12 +696,28 @@ if (typeof module !== 'undefined' && module.exports) {
       opacity: 0.65 !important;
       pointer-events: none !important;
     }
-    /* Clean corner framing: remove redundant outer frame lines and tick marks from the hero frame
-       so both the top-right and bottom-left have exactly ONE clean, matching technical bracket */
+    /* Clean corner framing: remove stray/duplicate outer frame lines and ticks */
     .hero--editorial .hero__frame-line,
     .hero--editorial .signal-tick,
     .hero--editorial .hero__abstract-cross {
       display: none !important;
+    }
+    /* Precision Card Corner Bracket: properly aligned and hugging the card's bottom-left corner */
+    .hero-card-bracket {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .hero-card-bracket--bl {
+      bottom: -10px;
+      left: -10px;
+    }
+    .hero-card-bracket svg {
+      width: 100%;
+      height: 100%;
+      display: block;
     }
     .hero--editorial .hero__copy {
       position: relative !important;
@@ -2140,14 +2156,30 @@ if (typeof module !== 'undefined' && module.exports) {
     });
   }
 
+  function initHeroCardBrackets() {
+    var heroArt = document.querySelector('.hero-art');
+    if (!heroArt || heroArt.querySelector('.hero-card-bracket--bl')) return;
+
+    var blBracket = document.createElement('div');
+    blBracket.className = 'hero-card-bracket hero-card-bracket--bl';
+    blBracket.setAttribute('aria-hidden', 'true');
+    blBracket.innerHTML = '<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<path d="M2 0v46h46" stroke="#F4F0E7" stroke-opacity=".36" stroke-width="2"/>' +
+    '</svg>';
+
+    heroArt.appendChild(blBracket);
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       initSidebarBrightnessController();
       initHeroIntelligenceEngine();
+      initHeroCardBrackets();
     });
   } else {
     initSidebarBrightnessController();
     initHeroIntelligenceEngine();
+    initHeroCardBrackets();
   }
 
 
