@@ -687,7 +687,7 @@ if (typeof module !== 'undefined' && module.exports) {
        Fixes abstract background image interference behind hero typography
        -------------------------------------------------------------------------- */
     .hero--editorial {
-      background-position: right -60px center, 88% 20%, 8% 95%, center !important;
+      background-position: right -76px calc(50% - 26px), 88% 20%, 8% 95%, center !important;
       background-size: min(65%, 820px) auto, auto, auto, cover !important;
     }
     .hero--editorial .hero__abstract {
