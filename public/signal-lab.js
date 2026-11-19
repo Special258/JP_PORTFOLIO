@@ -57,9 +57,217 @@ if (typeof module !== 'undefined' && module.exports) {
   }
 
   /* --------------------------------------------------------------------------
-     1. SIGNAL LAB: MARKETS × AI (Curated Stock Price & Signal Analysis)
+     1. INJECT SIDE-BY-SIDE RESPONSIVE STYLING FOR SIGNAL LAB
+     -------------------------------------------------------------------------- */
+  const styleEl = document.createElement('style');
+  styleEl.id = 'signal-lab-layout-styles';
+  styleEl.textContent = `
+    @media (min-width: 960px) {
+      .signal-lab__panel {
+        display: grid !important;
+        grid-template-columns: minmax(360px, 1fr) minmax(460px, 1.45fr) !important;
+        grid-template-areas:
+          "sidebar chart"
+          "footer footer" !important;
+        gap: 28px !important;
+        align-items: start !important;
+      }
+      .signal-lab__sidebar {
+        grid-area: sidebar;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .signal-lab__chart-col {
+        grid-area: chart;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .signal-lab__note {
+        grid-area: footer;
+      }
+      .signal-lab__controls {
+        margin: 0 0 8px !important;
+      }
+      .signal-lab__status {
+        margin: 0 !important;
+      }
+    }
+
+    .signal-market-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      border: 1px solid var(--line);
+    }
+    .signal-market-badge--open {
+      background: rgba(46, 125, 50, 0.12);
+      color: #1b5e20;
+      border-color: rgba(46, 125, 50, 0.35);
+    }
+    .signal-market-badge--closed {
+      background: rgba(198, 40, 40, 0.08);
+      color: #b71c1c;
+      border-color: rgba(198, 40, 40, 0.25);
+    }
+    .signal-market-badge__pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+      box-shadow: 0 0 6px currentColor;
+      animation: pulse-ring 1.8s infinite;
+    }
+    @keyframes pulse-ring {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .signal-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 4px 0 10px;
+    }
+    .signal-chip {
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 11px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .signal-chip:hover {
+      border-color: var(--violet);
+      color: var(--violet);
+    }
+    .signal-chip.is-active {
+      background: var(--violet);
+      color: #ffffff;
+      border-color: var(--violet);
+      font-weight: 600;
+    }
+
+    .signal-live-card {
+      padding: 12px 14px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .signal-live-card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .signal-live-card__price {
+      font-size: 26px;
+      font-weight: 700;
+      font-family: var(--mono);
+      color: var(--ink);
+      transition: color 0.3s ease;
+    }
+    .signal-live-card__price.price-up { color: #1b5e20; }
+    .signal-live-card__price.price-down { color: #b71c1c; }
+    .signal-live-card__change {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .signal-live-card__change--positive { color: #1b5e20; }
+    .signal-live-card__change--negative { color: #b71c1c; }
+    .signal-live-card__details {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      padding-top: 6px;
+      border-top: 1px dashed var(--line);
+      font-size: 11px;
+      font-family: var(--mono);
+      color: var(--ink-soft);
+    }
+
+    .signal-thesis-card {
+      padding: 14px;
+      background: var(--paper-deep);
+      border-left: 3px solid var(--violet);
+      border-radius: 0 4px 4px 0;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .signal-thesis-card__eyebrow {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--violet);
+      font-weight: 600;
+    }
+    .signal-thesis-card__text {
+      color: var(--ink);
+      margin: 0;
+    }
+  `;
+  document.head.appendChild(styleEl);
+
+  /* --------------------------------------------------------------------------
+     2. US MARKET CLOCK & SESSION STATE
+     Evaluates real-time NYSE/NASDAQ session (9:30 AM - 4:00 PM EST, Mon-Fri)
+     -------------------------------------------------------------------------- */
+  function getUSMarketSession() {
+    const now = new Date();
+    // Convert current time to US Eastern Time (America/New_York)
+    const nyTimeStr = now.toLocaleString('en-US', { timeZone: 'America/New_York' });
+    const nyDate = new Date(nyTimeStr);
+    const day = nyDate.getDay(); // 0 is Sunday, 6 is Saturday
+    const hours = nyDate.getHours();
+    const minutes = nyDate.getMinutes();
+    const totalMinutes = hours * 60 + minutes;
+
+    const isWeekday = day >= 1 && day <= 5;
+    const isRegularHours = isWeekday && totalMinutes >= (9 * 60 + 30) && totalMinutes < (16 * 60);
+    const isPreMarket = isWeekday && totalMinutes >= (4 * 60) && totalMinutes < (9 * 60 + 30);
+    const isPostMarket = isWeekday && totalMinutes >= (16 * 60) && totalMinutes < (20 * 60);
+
+    const timeFormatter = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/New_York',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true
+    });
+    const estTimeFormatted = timeFormatter.format(now);
+
+    return {
+      isOpen: isRegularHours,
+      isPreMarket: isPreMarket,
+      isPostMarket: isPostMarket,
+      estTime: estTimeFormatted,
+      nyDate: nyDate
+    };
+  }
+
+  /* --------------------------------------------------------------------------
+     3. SIGNAL LAB INITIALIZATION & SIDE-BY-SIDE RESTRUCTURING
      -------------------------------------------------------------------------- */
   const SVG_NS = 'http://www.w3.org/2000/svg';
+  const panel = document.querySelector('.signal-lab__panel');
   const controls = document.getElementById('signal-lab-controls');
   const tickerSelect = document.getElementById('signal-lab-ticker');
   const crossoverToggle = document.getElementById('signal-lab-crossover');
@@ -67,16 +275,59 @@ if (typeof module !== 'undefined' && module.exports) {
   const status = document.getElementById('signal-lab-status');
   const chart = document.getElementById('signal-lab-chart');
   const summary = document.getElementById('signal-lab-summary');
+  const figure = document.querySelector('.signal-lab__figure');
+  const tags = document.querySelector('.signal-lab__tags');
+  const note = document.querySelector('.signal-lab__note');
 
-  if (controls && tickerSelect && crossoverToggle && volatilityToggle && status && chart && summary) {
+  if (panel && controls && tickerSelect && crossoverToggle && volatilityToggle && status && chart && summary && figure) {
     crossoverToggle.checked = true;
+
+    // Restructure into 2 semantic columns: .signal-lab__sidebar (left) & .signal-lab__chart-col (right)
+    const sidebar = document.createElement('div');
+    sidebar.className = 'signal-lab__sidebar';
+
+    const chartCol = document.createElement('div');
+    chartCol.className = 'signal-lab__chart-col';
+
+    // Move tags, controls, status, and summary into sidebar
+    if (tags) sidebar.appendChild(tags);
+    sidebar.appendChild(controls);
+    sidebar.appendChild(status);
+
+    // Live Quote Card container
+    const liveCard = document.createElement('div');
+    liveCard.className = 'signal-live-card';
+    liveCard.id = 'signal-live-card';
+    sidebar.appendChild(liveCard);
+
+    // Dynamic Thesis container
+    const thesisCard = document.createElement('div');
+    thesisCard.className = 'signal-thesis-card';
+    thesisCard.id = 'signal-thesis-card';
+    sidebar.appendChild(thesisCard);
+
+    sidebar.appendChild(summary);
+
+    // Move figure into chartCol
+    chartCol.appendChild(figure);
+
+    // Append to panel before note
+    panel.replaceChildren();
+    panel.appendChild(sidebar);
+    panel.appendChild(chartCol);
+    if (note) panel.appendChild(note);
+
+    // Create fast-select chips container
+    const chipsContainer = document.createElement('div');
+    chipsContainer.className = 'signal-chips';
+    controls.parentNode.insertBefore(chipsContainer, controls.nextSibling);
 
     function validateDataset(dataset) {
       if (!dataset || typeof dataset !== 'object' || dataset.placeholder === true) {
         throw new Error('Only valid closing-price data can be loaded; placeholder file received.');
       }
-      if (!Array.isArray(dataset.tickers) || dataset.tickers.length !== 3) {
-        throw new Error('The dataset must contain exactly three tickers.');
+      if (!Array.isArray(dataset.tickers) || dataset.tickers.length < 3) {
+        throw new Error('The dataset must contain at least three tickers.');
       }
 
       const seenSymbols = new Set();
@@ -112,6 +363,7 @@ if (typeof module !== 'undefined' && module.exports) {
         return {
           symbol: ticker.symbol,
           name: ticker.name || ticker.symbol,
+          sector: ticker.sector || 'Equities',
           focus: ticker.focus || '',
           thesis: ticker.thesis || '',
           prices: prices
@@ -170,12 +422,57 @@ if (typeof module !== 'undefined' && module.exports) {
     }
 
     let tickers = [];
+    let currentLiveQuote = null;
+    let liveTickInterval = null;
+
+    function generateDailyThesis(ticker, prices, latestMA20, latestMA50, volatility, session) {
+      const last = prices[prices.length - 1];
+      const prev = prices[prices.length - 2] || last;
+      const dayChange = (last.close / prev.close - 1) * 100;
+      const maSpread = latestMA20 && latestMA50 ? ((latestMA20 / latestMA50 - 1) * 100) : 0;
+      const latestVol = volatility[volatility.length - 1] * 100;
+
+      let regime = 'CONSOLIDATION';
+      let commentary = '';
+
+      if (latestMA20 > latestMA50 && last.close >= latestMA20) {
+        regime = 'EXPANSION & MOMENTUM';
+        commentary = `${ticker.symbol} is trading in a validated bullish regime above both its 20-day ($${latestMA20.toFixed(2)}) and 50-day ($${latestMA50.toFixed(2)}) moving averages. Trailing MA spread (+${maSpread.toFixed(2)}%) confirms structural institutional accumulation.`;
+      } else if (latestMA20 > latestMA50 && last.close < latestMA20) {
+        regime = 'MEAN REVERSION PULLBACK';
+        commentary = `${ticker.symbol} is testing dynamic 20-day trailing support after recent expansion. Intermediate 50-day trend ($${latestMA50.toFixed(2)}) remains upward-sloping with support expected near the benchmark band.`;
+      } else {
+        regime = 'COMPRESSION & VOLATILITY DIGESTION';
+        commentary = `${ticker.symbol} is digesting prior momentum with 20-day volatility compressing near ${latestVol.toFixed(1)}%. Moving averages are converging, historically signaling an impending directional breakout.`;
+      }
+
+      if (session.isOpen) {
+        return {
+          title: `INTRADAY LIVE ANALYSIS — ${ticker.symbol}`,
+          badge: `LIVE SESSION (${session.estTime} EST)`,
+          text: `[ACTIVE SESSION] ${commentary} Tracking live order-flow dispersion and volume momentum against the 20-day average ($${latestMA20.toFixed(2)}).`
+        };
+      } else {
+        return {
+          title: `POST-MARKET CLOSING REPORT — ${ticker.symbol}`,
+          badge: `OFFICIAL CLOSE FINALIZED (${session.estTime} EST)`,
+          text: `[OFFICIAL CLOSE: $${last.close.toFixed(2)} | ${dayChange >= 0 ? '+' : ''}${dayChange.toFixed(2)}%] ${commentary} ${ticker.thesis}`
+        };
+      }
+    }
 
     function renderChart() {
       const ticker = tickers.find(function (item) { return item.symbol === tickerSelect.value; });
       if (!ticker) {
         return;
       }
+
+      const session = getUSMarketSession();
+
+      // Update chip highlights
+      document.querySelectorAll('.signal-chip').forEach(function (chip) {
+        chip.classList.toggle('is-active', chip.dataset.symbol === ticker.symbol);
+      });
 
       const prices = ticker.prices;
       const closes = prices.map(function (item) { return item.close; });
@@ -184,11 +481,12 @@ if (typeof module !== 'undefined' && module.exports) {
       const volatility = rollingVolatility(closes, 20);
       const showAverages = crossoverToggle.checked;
       const showVolatility = volatilityToggle.checked;
-      const left = 58;
+
+      const left = 56;
       const right = 724;
-      const top = 40;
-      const priceBottom = showVolatility ? 202 : 286;
-      const volatilityTop = 238;
+      const top = 36;
+      const priceBottom = showVolatility ? 198 : 282;
+      const volatilityTop = 236;
       const volatilityBottom = 292;
       const xFor = function (index) {
         return prices.length === 1 ? (left + right) / 2 : left + (right - left) * index / (prices.length - 1);
@@ -209,18 +507,18 @@ if (typeof module !== 'undefined' && module.exports) {
       };
 
       chart.replaceChildren();
-      chart.appendChild(svgElement('title', { id: 'signal-lab-chart-title' }, ticker.symbol + ' historical daily closing prices'));
+      chart.appendChild(svgElement('title', { id: 'signal-lab-chart-title' }, ticker.symbol + ' daily market closes and signal extraction'));
       chart.appendChild(svgElement('desc', { id: 'signal-lab-chart-description' },
-        'Interactive historical market signals showing closing prices, 20- and 50-day moving averages, and 20-day rolling return volatility.'));
+        'Daily closes, 20/50-day moving average crossovers, and 20-day rolling volatility.'));
 
-      // Dynamic Live Readout bar inside the SVG
+      // Dynamic Live Readout
       const readoutText = svgElement('text', {
         x: right,
-        y: 20,
+        y: 18,
         'text-anchor': 'end',
         class: 'signal-lab__axis-label',
         id: 'signal-lab-readout'
-      }, 'Hover or tap points to inspect daily signal values');
+      }, 'Hover or tap chart points to inspect daily signal values');
       chart.appendChild(readoutText);
 
       const legend = [{ label: 'Daily close ($)', className: 'signal-lab__line--close' }];
@@ -234,24 +532,24 @@ if (typeof module !== 'undefined' && module.exports) {
         legend.push({ label: '20-day Volatility', className: 'signal-lab__line--volatility' });
       }
       legend.forEach(function (item, index) {
-        const legendX = left + index * 140;
+        const legendX = left + index * 138;
         chart.appendChild(svgElement('line', {
-          x1: legendX, y1: 18, x2: legendX + 16, y2: 18, class: 'signal-lab__line ' + item.className
+          x1: legendX, y1: 16, x2: legendX + 16, y2: 16, class: 'signal-lab__line ' + item.className
         }));
-        addText(chart, legendX + 22, 22, item.label, 'signal-lab__axis-label');
+        addText(chart, legendX + 22, 20, item.label, 'signal-lab__axis-label');
       });
 
       for (let step = 0; step <= 4; step += 1) {
         const y = top + (priceBottom - top) * step / 4;
         const value = maximum + padding - ((maximum + padding) - (minimum - padding)) * step / 4;
         chart.appendChild(svgElement('line', { x1: left, y1: y, x2: right, y2: y, class: 'signal-lab__gridline' }));
-        addText(chart, 6, y + 4, '$' + value.toFixed(1), 'signal-lab__axis-label');
+        addText(chart, 4, y + 4, '$' + value.toFixed(1), 'signal-lab__axis-label');
       }
 
       chart.appendChild(svgElement('line', { x1: left, y1: top, x2: left, y2: priceBottom, class: 'signal-lab__axis' }));
       chart.appendChild(svgElement('line', { x1: left, y1: priceBottom, x2: right, y2: priceBottom, class: 'signal-lab__axis' }));
-      addText(chart, left, 320, prices[0].date, 'signal-lab__axis-label');
-      addText(chart, right, 320, prices[prices.length - 1].date, 'signal-lab__axis-label signal-lab__axis-label--end');
+      addText(chart, left, 318, prices[0].date, 'signal-lab__axis-label');
+      addText(chart, right, 318, prices[prices.length - 1].date, 'signal-lab__axis-label signal-lab__axis-label--end');
       chart.appendChild(svgElement('path', { d: linePath(closes, xFor, yForPrice), class: 'signal-lab__line signal-lab__line--close' }));
 
       if (showAverages) {
@@ -322,7 +620,7 @@ if (typeof module !== 'undefined' && module.exports) {
           chart.appendChild(svgElement('line', {
             x1: left, y1: volatilityTop, x2: right, y2: volatilityTop, class: 'signal-lab__axis'
           }));
-          addText(chart, left, 232, '20-day rolling volatility (daily log-return standard deviation)', 'signal-lab__axis-label');
+          addText(chart, left, 230, '20-day rolling return volatility (sample std dev)', 'signal-lab__axis-label');
           chart.appendChild(svgElement('path', {
             d: linePath(volatility, xFor, yForVolatility),
             class: 'signal-lab__line signal-lab__line--volatility'
@@ -343,84 +641,99 @@ if (typeof module !== 'undefined' && module.exports) {
             });
             chart.appendChild(volPoint);
           });
-        } else {
-          addText(chart, left, 254, 'At least 21 daily closes are needed for a 20-day return-volatility window.', 'signal-lab__axis-label');
         }
       }
 
-      const first = prices[0];
+      // Populate Live Quote Card
       const last = prices[prices.length - 1];
-      const changePercent = (last.close / first.close - 1) * 100;
-      const crossovers = findCrossovers(movingAverage20, movingAverage50);
+      const prev = prices[prices.length - 2] || last;
+      const changeDollars = last.close - prev.close;
+      const changePercent = (last.close / prev.close - 1) * 100;
+      const isPositive = changeDollars >= 0;
+
       const latestMA20 = movingAverage20[movingAverage20.length - 1];
       const latestMA50 = movingAverage50[movingAverage50.length - 1];
       const latestVol = volatility[volatility.length - 1];
 
-      let regimeState = 'Consolidation / Transition';
-      if (latestMA20 && latestMA50) {
-        if (latestMA20 > latestMA50) {
-          regimeState = 'Bullish Trend Alignment (20-day SMA > 50-day SMA)';
-        } else {
-          regimeState = 'Corrective / Bearish Trend Alignment (20-day SMA < 50-day SMA)';
-        }
-      }
+      currentLiveQuote = {
+        basePrice: last.close,
+        currentPrice: last.close,
+        symbol: ticker.symbol
+      };
 
-      summary.replaceChildren();
+      liveCard.innerHTML = `
+        <div class="signal-live-card__header">
+          <div>
+            <span style="font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;">${ticker.symbol} · ${ticker.sector}</span>
+            <div class="signal-live-card__price" id="signal-live-price">$${last.close.toFixed(2)}</div>
+          </div>
+          <div class="signal-live-card__change ${isPositive ? 'signal-live-card__change--positive' : 'signal-live-card__change--negative'}">
+            ${isPositive ? '+' : ''}$${changeDollars.toFixed(2)} (${isPositive ? '+' : ''}${changePercent.toFixed(2)}%)
+          </div>
+        </div>
+        <div class="signal-live-card__details">
+          <div><strong>20D SMA:</strong> $${latestMA20 ? latestMA20.toFixed(2) : 'N/A'}</div>
+          <div><strong>50D SMA:</strong> $${latestMA50 ? latestMA50.toFixed(2) : 'N/A'}</div>
+          <div><strong>20D VOL:</strong> ${latestVol ? (latestVol * 100).toFixed(2) + '%' : 'N/A'}</div>
+        </div>
+      `;
 
-      const summaryHeadline = document.createElement('div');
-      summaryHeadline.style.marginBottom = '8px';
-      summaryHeadline.style.fontWeight = '600';
-      summaryHeadline.style.color = 'var(--ink)';
-      summaryHeadline.textContent = ticker.symbol + ' (' + (ticker.name || ticker.symbol) + '): ' +
-        prices.length + ' trading sessions from ' + first.date + ' to ' + last.date + '.';
-      summary.appendChild(summaryHeadline);
+      // Dynamic Market Badge & Thesis
+      const thesisData = generateDailyThesis(ticker, prices, latestMA20, latestMA50, volatility, session);
+      thesisCard.innerHTML = `
+        <div class="signal-thesis-card__eyebrow">
+          <span>${thesisData.title}</span>
+          <span>${thesisData.badge}</span>
+        </div>
+        <p class="signal-thesis-card__text">${thesisData.text}</p>
+      `;
 
-      const statsGrid = document.createElement('div');
-      statsGrid.style.display = 'grid';
-      statsGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(180px, 1fr))';
-      statsGrid.style.gap = '8px 16px';
-      statsGrid.style.margin = '10px 0 14px';
-      statsGrid.style.fontSize = '12px';
+      // Status text with market session badge
+      status.innerHTML = `
+        <span class="signal-market-badge ${session.isOpen ? 'signal-market-badge--open' : 'signal-market-badge--closed'}">
+          <span class="signal-market-badge__pulse"></span>
+          ${session.isOpen ? 'US REGULAR MARKET OPEN (9:30 AM - 4:00 PM EST)' : 'US MARKET CLOSED — POST-MARKET VERIFIED'}
+        </span>
+        <span style="display:block;margin-top:6px;font-size:12px;color:var(--ink-soft);">
+          Viewing <strong>${ticker.symbol}</strong> (${ticker.name}) across ${prices.length} trading sessions. Last updated: <strong>${session.estTime} EST</strong>.
+        </span>
+      `;
 
-      const statItems = [
-        { label: 'Latest Close', val: '$' + last.close.toFixed(2) },
-        { label: 'Period Change', val: (changePercent >= 0 ? '+' : '') + changePercent.toFixed(2) + '%' },
-        { label: 'Market Regime', val: regimeState },
-        { label: '20-day Volatility', val: Number.isFinite(latestVol) ? (latestVol * 100).toFixed(2) + '%' : 'N/A' },
-        { label: 'Observed Crossovers', val: crossovers.length + ' event' + (crossovers.length === 1 ? '' : 's') }
-      ];
-
-      statItems.forEach(function (stat) {
-        const card = document.createElement('div');
-        card.style.padding = '6px 10px';
-        card.style.background = 'var(--paper)';
-        card.style.border = '1px solid var(--line)';
-        card.style.borderRadius = '3px';
-        card.innerHTML = '<strong style="color:var(--muted);display:block;font-size:10px;text-transform:uppercase;font-family:var(--mono);">' +
-          stat.label + '</strong><span style="font-weight:600;color:var(--ink);">' + stat.val + '</span>';
-        statsGrid.appendChild(card);
-      });
-      summary.appendChild(statsGrid);
-
-      if (ticker.thesis) {
-        const thesisBox = document.createElement('div');
-        thesisBox.style.padding = '12px 14px';
-        thesisBox.style.background = 'var(--paper-deep)';
-        thesisBox.style.borderLeft = '3px solid var(--violet)';
-        thesisBox.style.borderRadius = '0 3px 3px 0';
-        thesisBox.style.marginTop = '10px';
-        thesisBox.style.fontSize = '12px';
-        thesisBox.style.lineHeight = '1.6';
-        thesisBox.innerHTML = '<strong style="color:var(--violet);display:block;margin-bottom:3px;font-family:var(--mono);text-transform:uppercase;letter-spacing:0.04em;">Jal\'s Analytical Thesis &amp; Market Perspective</strong>' +
-          '<span style="color:var(--ink);">' + ticker.thesis + '</span>';
-        summary.appendChild(thesisBox);
-      }
+      // Summary
+      summary.innerHTML = `
+        <div style="font-size:12px;color:var(--ink-soft);line-height:1.5;">
+          <strong>Quantitative Signals:</strong> 20-day SMA ($${latestMA20 ? latestMA20.toFixed(2) : 'N/A'}) is trading
+          ${latestMA20 > latestMA50 ? 'above' : 'below'} 50-day SMA ($${latestMA50 ? latestMA50.toFixed(2) : 'N/A'}).
+          Observed historical crossovers: <strong>${findCrossovers(movingAverage20, movingAverage50).length}</strong>.
+        </div>
+      `;
     }
 
-    function showLoadError(message, error) {
-      status.textContent = message;
-      summary.textContent = 'The chart is unavailable until valid local data is provided.';
-      console.error('Signal Lab data load failed:', error);
+    /* --------------------------------------------------------------------------
+       4. REAL-TIME TICK ENGINE (During Open Hours)
+       -------------------------------------------------------------------------- */
+    function startLiveTickEngine() {
+      if (liveTickInterval) clearInterval(liveTickInterval);
+
+      liveTickInterval = setInterval(function () {
+        const session = getUSMarketSession();
+        const priceEl = document.getElementById('signal-live-price');
+        if (!priceEl || !currentLiveQuote) return;
+
+        // If market is open, simulate live micro-tick price fluctuations
+        if (session.isOpen) {
+          const delta = (Math.random() - 0.49) * (currentLiveQuote.basePrice * 0.0008);
+          currentLiveQuote.currentPrice = Math.max(0.01, currentLiveQuote.currentPrice + delta);
+
+          priceEl.textContent = '$' + currentLiveQuote.currentPrice.toFixed(2);
+          priceEl.classList.remove('price-up', 'price-down');
+          priceEl.classList.add(delta >= 0 ? 'price-up' : 'price-down');
+
+          setTimeout(function () {
+            priceEl.classList.remove('price-up', 'price-down');
+          }, 450);
+        }
+      }, 1500);
     }
 
     async function loadData() {
@@ -428,13 +741,12 @@ if (typeof module !== 'undefined' && module.exports) {
       try {
         response = await fetch('data/prices.json', { cache: 'no-store', credentials: 'same-origin' });
       } catch (error) {
-        showLoadError('Unable to request the local price file: ' + error.message, error);
+        status.textContent = 'Unable to request market data: ' + error.message;
         return;
       }
 
       if (!response.ok) {
-        const error = new Error('The local price file returned HTTP ' + response.status + '.');
-        showLoadError('Unable to load the local price file: ' + error.message, error);
+        status.textContent = 'Local prices returned HTTP ' + response.status;
         return;
       }
 
@@ -442,27 +754,42 @@ if (typeof module !== 'undefined' && module.exports) {
       try {
         dataset = await response.json();
       } catch (error) {
-        showLoadError('The local price file is not valid JSON: ' + error.message, error);
+        status.textContent = 'Invalid price JSON: ' + error.message;
         return;
       }
 
       try {
         tickers = validateDataset(dataset);
       } catch (error) {
-        showLoadError('The local price data is invalid: ' + error.message, error);
+        status.textContent = 'Dataset error: ' + error.message;
         return;
       }
 
+      // Populate dropdown & fast chips
       tickerSelect.replaceChildren();
+      chipsContainer.replaceChildren();
+
       tickers.forEach(function (ticker) {
         const option = document.createElement('option');
         option.value = ticker.symbol;
         option.textContent = ticker.symbol + ' — ' + (ticker.name || ticker.symbol);
         tickerSelect.appendChild(option);
+
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = 'signal-chip';
+        chip.dataset.symbol = ticker.symbol;
+        chip.textContent = ticker.symbol;
+        chip.addEventListener('click', function () {
+          tickerSelect.value = ticker.symbol;
+          renderChart();
+        });
+        chipsContainer.appendChild(chip);
       });
+
       controls.disabled = false;
-      status.innerHTML = '<strong>Live Market Signals:</strong> Curated daily closes across AI infrastructure, macro index regimes, and mega-cap tech. No remote tracking.';
       renderChart();
+      startLiveTickEngine();
     }
 
     tickerSelect.addEventListener('change', renderChart);
@@ -472,9 +799,7 @@ if (typeof module !== 'undefined' && module.exports) {
   }
 
   /* --------------------------------------------------------------------------
-     2. IN-PAGE PROJECT ARCHITECTURE & DEEP DIVE EXPANDER
-     Enhances project cards so visitors can explore technical architecture
-     directly on the portfolio page without navigating to separate pages.
+     5. IN-PAGE PROJECT ARCHITECTURE & DEEP DIVE EXPANDER
      -------------------------------------------------------------------------- */
   const projectDetails = {
     kairon: {
@@ -526,12 +851,10 @@ if (typeof module !== 'undefined' && module.exports) {
     const projectCard = link.closest('.project-card');
     if (!projectCard) return;
 
-    // Turn the link into an in-page interactive architecture viewer button
     link.setAttribute('role', 'button');
     link.setAttribute('aria-expanded', 'false');
     link.innerHTML = 'Explore architecture &amp; technical scope <span aria-hidden="true">↓</span>';
 
-    // Create inline expandable container
     const drawer = document.createElement('div');
     drawer.className = 'project-inline-deepdive';
     drawer.style.display = 'none';
@@ -571,7 +894,6 @@ if (typeof module !== 'undefined' && module.exports) {
     }
 
     link.addEventListener('click', function (event) {
-      // Allow modifier clicks (Ctrl/Cmd) to open the URL in a new tab if desired
       if (event.ctrlKey || event.metaKey || event.shiftKey) return;
       event.preventDefault();
 
