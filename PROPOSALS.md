@@ -195,10 +195,3 @@ Adds `<link rel="related">` tags inside `<head>` of both pages. Visually 100% pi
 +            <span class="sr-only" id="copy-email-status" role="status" aria-live="polite"></span>
 ```
 
----
-
-## Proposal P8: Replace Landing Page with New Cover Page Design
-
-**One-line reason:** Set the newly designed full-screen cover page (`cover.html` with mountain-ridge market chart and interactive skill triggers) as the root landing page (`index.html`).  
-**Visible effect:** Replaces `public/index.html` with the new design; `public/portfolio.html` remains unchanged.  
-**Preview URL:** [http://localhost:3000/cover.html](http://localhost:3000/cover.html)
