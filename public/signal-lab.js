@@ -681,6 +681,206 @@ if (typeof module !== 'undefined' && module.exports) {
         font-weight: 600 !important;
       }
     }
+
+    /* --------------------------------------------------------------------------
+       HERO EDITORIAL: TEXT CONTRAST SHIELD & ABSTRACT BACKGROUND ART MASKING
+       Fixes abstract background image interference behind hero typography
+       -------------------------------------------------------------------------- */
+    .hero--editorial {
+      background-position: right -60px center, 88% 20%, 8% 95%, center !important;
+      background-size: min(65%, 820px) auto, auto, auto, cover !important;
+    }
+    .hero--editorial .hero__abstract {
+      mask-image: linear-gradient(to right, transparent 0%, transparent 38%, rgba(0, 0, 0, 0.35) 54%, rgba(0, 0, 0, 0.95) 75%, black 100%) !important;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 38%, rgba(0, 0, 0, 0.35) 54%, rgba(0, 0, 0, 0.95) 75%, black 100%) !important;
+      opacity: 0.65 !important;
+      pointer-events: none !important;
+    }
+    .hero--editorial .hero__copy {
+      position: relative !important;
+      z-index: 3 !important;
+      background: radial-gradient(ellipse at 15% 45%, rgba(23, 25, 35, 0.72) 0%, rgba(23, 25, 35, 0.3) 65%, transparent 100%);
+      border-radius: 12px;
+      padding-right: 12px;
+    }
+    @media (max-width: 1000px) {
+      .hero--editorial .hero__abstract {
+        mask-image: linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.5) 60%, black 100%) !important;
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.5) 60%, black 100%) !important;
+      }
+      .hero--editorial {
+        background-position: center bottom, center, center, center !important;
+        background-size: 100% auto, auto, auto, cover !important;
+      }
+    }
+
+    /* --------------------------------------------------------------------------
+       HERO CARD: INTELLIGENT MULTI-LAYER SIGNAL & NEURAL FEATURE ENGINE
+       Replaces generic static scatter plot with state-of-the-art interactive graphical representation
+       -------------------------------------------------------------------------- */
+    .hero-intelligence-engine {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 14px;
+      width: 100%;
+    }
+    .engine-nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .engine-tabs {
+      display: inline-flex;
+      background: rgba(18, 20, 28, 0.75);
+      padding: 3px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      gap: 2px;
+    }
+    .engine-tab {
+      background: none;
+      border: 1px solid transparent;
+      color: #9295a3;
+      font-family: var(--mono);
+      font-size: 8.5px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+    }
+    .engine-tab:hover {
+      color: #f4efe4;
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .engine-tab.is-active {
+      background: rgba(214, 255, 92, 0.12);
+      color: var(--lime);
+      border-color: rgba(214, 255, 92, 0.28);
+    }
+    .engine-tab__dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 6px var(--lime);
+      animation: pulse-ring 2s infinite;
+    }
+    .engine-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--mono);
+      font-size: 8px;
+      font-weight: 600;
+      color: #b8b6cb;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .engine-status-badge span {
+      color: var(--lime);
+    }
+    .engine-canvas-wrap {
+      position: relative;
+      width: 100%;
+      height: 195px;
+      background: radial-gradient(ellipse at 50% 50%, rgba(31, 35, 52, 0.65) 0%, rgba(20, 23, 33, 0.95) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08), 0 8px 24px rgba(0, 0, 0, 0.25);
+    }
+    .engine-svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .engine-synapse {
+      fill: none;
+      stroke-linecap: round;
+      transition: stroke-opacity 0.3s ease;
+    }
+    .engine-synapse--active {
+      stroke-dasharray: 8 16;
+      animation: synapse-flow 8s linear infinite;
+    }
+    @keyframes synapse-flow {
+      to { stroke-dashoffset: -96; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .engine-synapse--active {
+        animation: none !important;
+      }
+    }
+    .engine-node {
+      cursor: pointer;
+      transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.2s ease;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    .engine-node:hover {
+      transform: scale(1.3);
+      filter: drop-shadow(0 0 8px rgba(214, 255, 92, 0.6));
+    }
+    .engine-tooltip {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      padding: 4px 8px;
+      background: rgba(15, 17, 24, 0.92);
+      border: 1px solid rgba(139, 125, 255, 0.35);
+      border-radius: 4px;
+      font-family: var(--mono);
+      font-size: 8.5px;
+      color: #e5e3f0;
+      pointer-events: none;
+      backdrop-filter: blur(8px);
+      transition: opacity 0.2s ease;
+      opacity: 0.95;
+      letter-spacing: 0.04em;
+    }
+    .engine-footer-telemetry {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.1);
+      font-family: var(--mono);
+    }
+    .engine-telemetry-col {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .engine-telemetry-lbl {
+      font-size: 7.5px;
+      color: #8c8f9e;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .engine-telemetry-val {
+      font-size: 9.5px;
+      font-weight: 600;
+      color: #f4efe4;
+      white-space: nowrap;
+    }
+    .engine-telemetry-val--lime {
+      color: var(--lime);
+    }
+    .engine-telemetry-val--violet {
+      color: #b6aaff;
+    }
+
   `;
   document.head.appendChild(styleEl);
 
@@ -1629,10 +1829,283 @@ if (typeof module !== 'undefined' && module.exports) {
     evaluateSidebarBackground();
   }
 
+  /* --------------------------------------------------------------------------
+     9. HERO CARD INTELLIGENCE ENGINE
+     Replaces generic 2D scatter plot with dynamic Multi-Modal Signal & Neural Lattice
+     -------------------------------------------------------------------------- */
+  function initHeroIntelligenceEngine() {
+    const heroCard = document.querySelector('.hero-art__card');
+    if (!heroCard) return;
+
+    const oldChart = heroCard.querySelector('.hero-art__chart');
+    if (oldChart) {
+      oldChart.style.display = 'none';
+    }
+
+    // Guard against duplicate injection
+    if (heroCard.querySelector('.hero-intelligence-engine')) return;
+
+    const engineContainer = document.createElement('div');
+    engineContainer.className = 'hero-intelligence-engine';
+    engineContainer.id = 'hero-intelligence-engine';
+
+    // SVG Mode templates
+    const svgModes = {
+      neural:
+        '<svg class="engine-svg" viewBox="0 0 520 200" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+          '<defs>' +
+            '<linearGradient id="syn-lime" x1="0" y1="0" x2="1" y2="0">' +
+              '<stop stop-color="#8b7dff" stop-opacity="0.4"/>' +
+              '<stop offset="1" stop-color="#d6ff5c" stop-opacity="0.85"/>' +
+            '</linearGradient>' +
+            '<linearGradient id="syn-violet" x1="0" y1="0" x2="1" y2="0">' +
+              '<stop stop-color="#8b7dff" stop-opacity="0.7"/>' +
+              '<stop offset="1" stop-color="#6e4cc7" stop-opacity="0.3"/>' +
+            '</linearGradient>' +
+            '<radialGradient id="node-glow-lime">' +
+              '<stop stop-color="#d6ff5c" stop-opacity="0.4"/>' +
+              '<stop offset="1" stop-color="#d6ff5c" stop-opacity="0"/>' +
+            '</radialGradient>' +
+            '<radialGradient id="node-glow-violet">' +
+              '<stop stop-color="#8b7dff" stop-opacity="0.4"/>' +
+              '<stop offset="1" stop-color="#8b7dff" stop-opacity="0"/>' +
+            '</radialGradient>' +
+            '<pattern id="engine-grid" width="26" height="26" patternUnits="userSpaceOnUse">' +
+              '<path d="M26 0H0v26" fill="none" stroke="rgba(255,255,255,0.03)"/>' +
+            '</pattern>' +
+          '</defs>' +
+          '<rect width="520" height="200" fill="url(#engine-grid)"/>' +
+          '<text x="35" y="22" font-family="\'DM Mono\', monospace" font-size="7.5" fill="#8c8f9e" letter-spacing="0.08em">01 / INPUT SIGNALS</text>' +
+          '<text x="175" y="22" font-family="\'DM Mono\', monospace" font-size="7.5" fill="#8c8f9e" letter-spacing="0.08em">02 / LATENT SYNAPSES</text>' +
+          '<text x="370" y="22" font-family="\'DM Mono\', monospace" font-size="7.5" fill="#8c8f9e" letter-spacing="0.08em">03 / DECISION REGIME</text>' +
+          '<path class="engine-synapse engine-synapse--active" d="M55 50 C110 50, 130 50, 185 50" stroke="url(#syn-lime)" stroke-width="1.8"/>' +
+          '<path class="engine-synapse engine-synapse--active" d="M55 50 C110 50, 130 90, 185 90" stroke="url(#syn-violet)" stroke-width="1.2"/>' +
+          '<path class="engine-synapse" d="M55 50 C110 50, 130 130, 185 130" stroke="rgba(139,125,255,0.2)" stroke-width="1"/>' +
+          '<path class="engine-synapse engine-synapse--active" d="M55 105 C110 105, 130 50, 185 50" stroke="url(#syn-violet)" stroke-width="1.2"/>' +
+          '<path class="engine-synapse engine-synapse--active" d="M55 105 C110 105, 130 90, 185 90" stroke="url(#syn-lime)" stroke-width="2"/>' +
+          '<path class="engine-synapse engine-synapse--active" d="M55 105 C110 105, 130 130, 185 130" stroke="url(#syn-violet)" stroke-width="1.5"/>' +
+          '<path class="engine-synapse" d="M55 105 C110 105, 130 165, 185 165" stroke="rgba(139,125,255,0.2)" stroke-width="1"/>' +
+          '<path class="engine-synapse" d="M55 160 C110 160, 130 90, 185 90" stroke="rgba(139,125,255,0.2)" stroke-width="1"/>' +
+          '<path class="engine-synapse engine-synapse--active" d="M55 160 C110 160, 130 130, 185 130" stroke="url(#syn-lime)" stroke-width="1.5"/>' +
+          '<path class="engine-synapse engine-synapse--active" d="M55 160 C110 160, 130 165, 185 165" stroke="url(#syn-violet)" stroke-width="1.4"/>' +
+          '<path class="engine-synapse engine-synapse--active" d="M185 50 C235 50, 245 65, 295 65" stroke="url(#syn-lime)" stroke-width="1.6"/>' +
+          '<path class="engine-synapse engine-synapse--active" d="M185 50 C235 50, 245 110, 295 110" stroke="url(#syn-violet)" stroke-width="1.2"/>' +
+          '<path class="engine-synapse engine-synapse--active" d="M185 90 C235 90, 245 65, 295 65" stroke="url(#syn-lime)" stroke-width="2"/>' +
+          '<path class="engine-synapse engine-synapse--active" d="M185 90 C235 90, 245 110, 295 110" stroke="url(#syn-lime)" stroke-width="1.8"/>' +
+          '<path class="engine-synapse engine-synapse--active" d="M185 90 C235 90, 245 150, 295 150" stroke="url(#syn-violet)" stroke-width="1.2"/>' +
+          '<path class="engine-synapse engine-synapse--active" d="M185 130 C235 130, 245 110, 295 110" stroke="url(#syn-violet)" stroke-width="1.4"/>' +
+          '<path class="engine-synapse engine-synapse--active" d="M185 130 C235 130, 245 150, 295 150" stroke="url(#syn-lime)" stroke-width="1.7"/>' +
+          '<path class="engine-synapse" d="M185 165 C235 165, 245 150, 295 150" stroke="rgba(139,125,255,0.25)" stroke-width="1"/>' +
+          '<path class="engine-synapse engine-synapse--active" d="M295 65 C345 65, 365 105, 415 105" stroke="url(#syn-lime)" stroke-width="2.2"/>' +
+          '<path class="engine-synapse engine-synapse--active" d="M295 110 C345 110, 365 105, 415 105" stroke="url(#syn-lime)" stroke-width="2.5"/>' +
+          '<path class="engine-synapse engine-synapse--active" d="M295 150 C345 150, 365 105, 415 105" stroke="url(#syn-violet)" stroke-width="1.6"/>' +
+          '<path d="M375 160 Q400 160 415 75 Q430 160 455 160" fill="rgba(214,255,92,0.06)" stroke="rgba(214,255,92,0.3)" stroke-dasharray="3 3"/>' +
+          '<line x1="415" y1="55" x2="415" y2="165" stroke="rgba(214,255,92,0.4)" stroke-dasharray="2 2"/>' +
+          '<g class="engine-node" data-tip="Input X1: Price Momentum Tensor (SMA20/SMA50 spread +1.79%)">' +
+            '<circle cx="55" cy="50" r="14" fill="url(#node-glow-lime)"/>' +
+            '<circle cx="55" cy="50" r="6" fill="#171a26" stroke="#d6ff5c" stroke-width="2"/>' +
+            '<text x="55" y="68" font-family="\'DM Mono\', monospace" font-size="7" fill="#b8b6cb" text-anchor="middle">p_momentum</text>' +
+          '</g>' +
+          '<g class="engine-node" data-tip="Input X2: Log-Return Volatility Dispersion (20D: 0.41%)">' +
+            '<circle cx="55" cy="105" r="14" fill="url(#node-glow-violet)"/>' +
+            '<circle cx="55" cy="105" r="6" fill="#171a26" stroke="#8b7dff" stroke-width="2"/>' +
+            '<text x="55" y="123" font-family="\'DM Mono\', monospace" font-size="7" fill="#b8b6cb" text-anchor="middle">σ_volatility</text>' +
+          '</g>' +
+          '<g class="engine-node" data-tip="Input X3: Macro Factor / Order Flow Vector">' +
+            '<circle cx="55" cy="160" r="14" fill="rgba(255,106,85,0.15)"/>' +
+            '<circle cx="55" cy="160" r="6" fill="#171a26" stroke="#ff6a55" stroke-width="2"/>' +
+            '<text x="55" y="178" font-family="\'DM Mono\', monospace" font-size="7" fill="#b8b6cb" text-anchor="middle">catalyst_flow</text>' +
+          '</g>' +
+          '<circle class="engine-node" data-tip="Latent Node H1: Weight +1.42 · ReLU" cx="185" cy="50" r="4.5" fill="#171a26" stroke="#d6ff5c" stroke-width="1.8"/>' +
+          '<circle class="engine-node" data-tip="Latent Node H2: Weight +0.89 · ReLU" cx="185" cy="90" r="5.5" fill="#171a26" stroke="#d6ff5c" stroke-width="2"/>' +
+          '<circle class="engine-node" data-tip="Latent Node H3: Weight -0.34 · GeLU" cx="185" cy="130" r="4.5" fill="#171a26" stroke="#8b7dff" stroke-width="1.5"/>' +
+          '<circle class="engine-node" data-tip="Latent Node H4: Weight +0.12 · GeLU" cx="185" cy="165" r="3.5" fill="#171a26" stroke="#8b7dff" stroke-width="1.2"/>' +
+          '<circle class="engine-node" data-tip="Dense Feature Z1: Attention Transform (Weight +2.10)" cx="295" cy="65" r="5" fill="#171a26" stroke="#d6ff5c" stroke-width="2"/>' +
+          '<circle class="engine-node" data-tip="Dense Feature Z2: Attention Transform (Weight +1.94)" cx="295" cy="110" r="6" fill="#171a26" stroke="#d6ff5c" stroke-width="2.2"/>' +
+          '<circle class="engine-node" data-tip="Dense Feature Z3: Risk Decay Filter (Weight -0.85)" cx="295" cy="150" r="4" fill="#171a26" stroke="#8b7dff" stroke-width="1.5"/>' +
+          '<g class="engine-node" data-tip="Inference Output: Bullish Expansion Regime (P = 94.8% Confidence)">' +
+            '<circle cx="415" cy="105" r="22" fill="url(#node-glow-lime)"/>' +
+            '<circle cx="415" cy="105" r="10" fill="#171a26" stroke="#d6ff5c" stroke-width="2.5"/>' +
+            '<circle cx="415" cy="105" r="4" fill="#d6ff5c"/>' +
+            '<text x="415" y="132" font-family="\'DM Mono\', monospace" font-size="8" font-weight="600" fill="#d6ff5c" text-anchor="middle">REGIME: STABLE</text>' +
+            '<text x="415" y="143" font-family="\'DM Mono\', monospace" font-size="7" fill="#b8b6cb" text-anchor="middle">CONFIDENCE: 94.8%</text>' +
+          '</g>' +
+        '</svg>',
+
+      regime:
+        '<svg class="engine-svg" viewBox="0 0 520 200" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+          '<defs>' +
+            '<linearGradient id="surf-grad" x1="0" y1="0" x2="1" y2="1">' +
+              '<stop stop-color="#d6ff5c" stop-opacity="0.25"/>' +
+              '<stop offset="0.5" stop-color="#8b7dff" stop-opacity="0.15"/>' +
+              '<stop offset="1" stop-color="#141721" stop-opacity="0.4"/>' +
+            '</linearGradient>' +
+          '</defs>' +
+          '<text x="35" y="22" font-family="\'DM Mono\', monospace" font-size="7.5" fill="#8c8f9e" letter-spacing="0.08em">TOPOLOGICAL REGIME SURFACE</text>' +
+          '<text x="480" y="22" font-family="\'DM Mono\', monospace" font-size="7.5" fill="#d6ff5c" letter-spacing="0.08em" text-anchor="end">MANIFOLD EXPANSION</text>' +
+          '<path d="M40 155 Q120 115 200 140 T360 80 T480 65" stroke="#d6ff5c" stroke-width="2.5" fill="none"/>' +
+          '<path d="M40 155 Q120 115 200 140 T360 80 T480 65 L480 180 L40 180 Z" fill="url(#surf-grad)"/>' +
+          '<path d="M40 165 Q120 130 200 150 T360 95 T480 82" stroke="#8b7dff" stroke-width="1.8" stroke-dasharray="4 6" fill="none"/>' +
+          '<path d="M40 175 Q120 145 200 160 T360 115 T480 105" stroke="rgba(139,125,255,0.4)" stroke-width="1.2" fill="none"/>' +
+          '<circle class="engine-node" data-tip="Inflection Point: Volatility Compression (σ = 0.38%)" cx="200" cy="140" r="5" fill="#171a26" stroke="#8b7dff" stroke-width="2"/>' +
+          '<circle class="engine-node" data-tip="Inflection Point: Momentum Acceleration (+2.35% Spread)" cx="360" cy="80" r="6" fill="#171a26" stroke="#d6ff5c" stroke-width="2.5"/>' +
+          '<circle class="engine-node" data-tip="Validated Regime: Upper Quantile Expansion" cx="480" cy="65" r="5" fill="#171a26" stroke="#d6ff5c" stroke-width="2"/>' +
+          '<line x1="40" y1="185" x2="480" y2="185" stroke="rgba(255,255,255,0.15)"/>' +
+          '<text x="40" y="196" font-family="\'DM Mono\', monospace" font-size="7" fill="#8c8f9e">T-60 TRADING SESSIONS</text>' +
+          '<text x="240" y="196" font-family="\'DM Mono\', monospace" font-size="7" fill="#8c8f9e" text-anchor="middle">VOLATILITY COMPRESSION</text>' +
+          '<text x="480" y="196" font-family="\'DM Mono\', monospace" font-size="7" fill="#8c8f9e" text-anchor="end">EXPANSION REGIME</text>' +
+        '</svg>',
+
+      clusters:
+        '<svg class="engine-svg" viewBox="0 0 520 200" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+          '<text x="35" y="22" font-family="\'DM Mono\', monospace" font-size="7.5" fill="#8c8f9e" letter-spacing="0.08em">HIGH-DIMENSIONAL FACTOR EMBEDDINGS</text>' +
+          '<text x="480" y="22" font-family="\'DM Mono\', monospace" font-size="7.5" fill="#d6ff5c" letter-spacing="0.08em" text-anchor="end">t-SNE / PCA CLUSTERS</text>' +
+          '<ellipse cx="370" cy="70" rx="80" ry="45" fill="rgba(214,255,92,0.06)" stroke="rgba(214,255,92,0.3)" stroke-dasharray="3 5"/>' +
+          '<text x="370" y="42" font-family="\'DM Mono\', monospace" font-size="7.5" font-weight="600" fill="#d6ff5c" text-anchor="middle">CLUSTER A: MOMENTUM LEADERS (n=342)</text>' +
+          '<circle class="engine-node" data-tip="NVDA: Momentum Rank 99.2 · Strong Inflow" cx="350" cy="65" r="4.5" fill="#171a26" stroke="#d6ff5c" stroke-width="1.8"/>' +
+          '<circle class="engine-node" data-tip="QQQ: Momentum Rank 96.8 · Tech Leadership" cx="390" cy="75" r="4" fill="#171a26" stroke="#d6ff5c" stroke-width="1.8"/>' +
+          '<circle class="engine-node" data-tip="AAPL: Momentum Rank 94.1 · Factor Alignment" cx="365" cy="85" r="3.5" fill="#171a26" stroke="#d6ff5c" stroke-width="1.5"/>' +
+          '<ellipse cx="160" cy="130" rx="75" ry="40" fill="rgba(139,125,255,0.06)" stroke="rgba(139,125,255,0.3)" stroke-dasharray="3 5"/>' +
+          '<text x="160" y="105" font-family="\'DM Mono\', monospace" font-size="7.5" font-weight="600" fill="#b6aaff" text-anchor="middle">CLUSTER B: MEAN REVERSION (n=188)</text>' +
+          '<circle class="engine-node" data-tip="SPY: Broad Index Benchmark · Beta 1.0" cx="140" cy="135" r="4" fill="#171a26" stroke="#8b7dff" stroke-width="1.8"/>' +
+          '<circle class="engine-node" data-tip="MSFT: Institutional Trend Anchor" cx="180" cy="125" r="4" fill="#171a26" stroke="#8b7dff" stroke-width="1.8"/>' +
+          '<ellipse cx="270" cy="165" rx="50" ry="25" fill="rgba(255,106,85,0.06)" stroke="rgba(255,106,85,0.3)" stroke-dasharray="3 5"/>' +
+          '<text x="270" y="152" font-family="\'DM Mono\', monospace" font-size="7" fill="#ff6a55" text-anchor="middle">FILTERED NOISE (n=94)</text>' +
+          '<circle class="engine-node" data-tip="TSLA: High Volatility Dispersion · Filtered Outlier" cx="265" cy="170" r="3.5" fill="#171a26" stroke="#ff6a55" stroke-width="1.5"/>' +
+        '</svg>'
+    };
+
+    const telemetryData = {
+      neural: [
+        { lbl: 'INFERENCE', val: 'REGIME STABLE · 94.8%', cls: 'telemetry-value--lime' },
+        { lbl: 'LATENCY', val: '7.4ms (EDGE)', cls: 'telemetry-value--violet' },
+        { lbl: 'TENSORS', val: '128 → 16 → 3', cls: '' }
+      ],
+      regime: [
+        { lbl: 'TOPOLOGY', val: 'VOLATILITY MANIFOLD', cls: 'telemetry-value--lime' },
+        { lbl: 'SHARPE / BETA', val: '2.18 / 1.04', cls: 'telemetry-value--violet' },
+        { lbl: 'TRAJECTORY', val: 'ACCUMULATION PHASE', cls: '' }
+      ],
+      clusters: [
+        { lbl: 'EMBEDDINGS', val: 't-SNE / PCA SEPARATION', cls: 'telemetry-value--lime' },
+        { lbl: 'CLUSTERING', val: 'K=3 FACTOR COHORTS', cls: 'telemetry-value--violet' },
+        { lbl: 'FIDELITY', val: '0.984 SEPARATION SCORE', cls: '' }
+      ]
+    };
+
+    const badgeLabels = {
+      neural: 'MODE: <span>AI SIGNAL TOPOLOGY</span>',
+      regime: 'MODE: <span>3D REGIME MANIFOLD</span>',
+      clusters: 'MODE: <span>FACTOR EMBEDDINGS</span>'
+    };
+
+    engineContainer.innerHTML =
+      '<div class="engine-nav-bar">' +
+        '<div class="engine-tabs" role="tablist" aria-label="Signal representation modes">' +
+          '<button type="button" class="engine-tab is-active" data-mode="neural" role="tab" aria-selected="true">' +
+            '<span class="engine-tab__dot"></span> NEURAL LATTICE' +
+          '</button>' +
+          '<button type="button" class="engine-tab" data-mode="regime" role="tab" aria-selected="false">REGIME SURFACE</button>' +
+          '<button type="button" class="engine-tab" data-mode="clusters" role="tab" aria-selected="false">FACTOR CLUSTERS</button>' +
+        '</div>' +
+        '<span class="engine-status-badge" id="engine-status-badge">' + badgeLabels.neural + '</span>' +
+      '</div>' +
+      '<div class="engine-canvas-wrap" id="engine-canvas-wrap">' +
+        svgModes.neural +
+        '<div class="engine-tooltip" id="engine-tooltip" style="opacity: 0;">Hover nodes to inspect signal state</div>' +
+      '</div>' +
+      '<div class="engine-footer-telemetry" id="engine-footer-telemetry">' +
+        telemetryData.neural.map(function (item) {
+          return '<div class="engine-telemetry-col">' +
+            '<span class="engine-telemetry-lbl">' + item.lbl + '</span>' +
+            '<strong class="engine-telemetry-val ' + (item.cls ? 'engine-' + item.cls : '') + '">' + item.val + '</strong>' +
+          '</div>';
+        }).join('') +
+      '</div>';
+
+    // Insert right after the heading
+    const heading = heroCard.querySelector('.hero-art__heading');
+    if (heading && heading.nextSibling) {
+      heroCard.insertBefore(engineContainer, heading.nextSibling);
+    } else {
+      heroCard.appendChild(engineContainer);
+    }
+
+    const tabs = engineContainer.querySelectorAll('.engine-tab');
+    const canvasWrap = engineContainer.querySelector('#engine-canvas-wrap');
+    const statusBadge = engineContainer.querySelector('#engine-status-badge');
+    const telemetryFooter = engineContainer.querySelector('#engine-footer-telemetry');
+    const tooltip = engineContainer.querySelector('#engine-tooltip');
+
+    function attachNodeHoverListeners() {
+      const nodes = canvasWrap.querySelectorAll('.engine-node');
+      nodes.forEach(function (node) {
+        node.addEventListener('mouseenter', function () {
+          const tip = node.getAttribute('data-tip');
+          if (tip && tooltip) {
+            tooltip.textContent = tip;
+            tooltip.style.opacity = '1';
+          }
+        });
+        node.addEventListener('mouseleave', function () {
+          if (tooltip) {
+            tooltip.style.opacity = '0';
+          }
+        });
+      });
+    }
+
+    attachNodeHoverListeners();
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        const mode = tab.getAttribute('data-mode');
+        if (!mode || !svgModes[mode]) return;
+
+        tabs.forEach(function (t) {
+          const isActive = t === tab;
+          t.classList.toggle('is-active', isActive);
+          t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+          const dot = t.querySelector('.engine-tab__dot');
+          if (isActive && !dot) {
+            const newDot = document.createElement('span');
+            newDot.className = 'engine-tab__dot';
+            t.insertBefore(newDot, t.firstChild);
+          } else if (!isActive && dot) {
+            dot.remove();
+          }
+        });
+
+        if (statusBadge && badgeLabels[mode]) {
+          statusBadge.innerHTML = badgeLabels[mode];
+        }
+
+        if (canvasWrap) {
+          canvasWrap.innerHTML = svgModes[mode] + '<div class="engine-tooltip" id="engine-tooltip" style="opacity: 0;">Hover nodes to inspect signal state</div>';
+          attachNodeHoverListeners();
+        }
+
+        if (telemetryFooter && telemetryData[mode]) {
+          telemetryFooter.innerHTML = telemetryData[mode].map(function (item) {
+            return '<div class="engine-telemetry-col">' +
+              '<span class="engine-telemetry-lbl">' + item.lbl + '</span>' +
+              '<strong class="engine-telemetry-val ' + (item.cls ? 'engine-' + item.cls : '') + '">' + item.val + '</strong>' +
+            '</div>';
+          }).join('');
+        }
+      });
+    });
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSidebarBrightnessController);
+    document.addEventListener('DOMContentLoaded', function () {
+      initSidebarBrightnessController();
+      initHeroIntelligenceEngine();
+    });
   } else {
     initSidebarBrightnessController();
+    initHeroIntelligenceEngine();
   }
+
 
 }());
