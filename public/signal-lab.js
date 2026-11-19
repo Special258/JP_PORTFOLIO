@@ -718,20 +718,34 @@ if (typeof module !== 'undefined' && module.exports) {
        HERO CARD: INTELLIGENT MULTI-LAYER SIGNAL & NEURAL FEATURE ENGINE
        Replaces generic static scatter plot with state-of-the-art interactive graphical representation
        -------------------------------------------------------------------------- */
+    .hero--editorial .hero-art {
+      width: 100% !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+    .hero--editorial .hero-art__card {
+      padding: clamp(16px, 2vw, 22px) clamp(18px, 2.4vw, 26px) 14px !important;
+      border-radius: 12px !important;
+    }
+    .hero--editorial .hero-art__heading {
+      margin-top: 14px !important;
+      font-size: clamp(20px, 2.3vw, 28px) !important;
+      line-height: 1.15 !important;
+    }
     .hero-intelligence-engine {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin-top: 14px;
+      gap: 7px !important;
+      margin-top: 8px !important;
       width: 100%;
     }
     .engine-nav-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 8px;
+      gap: 6px !important;
       flex-wrap: wrap;
-      padding-bottom: 8px;
+      padding-bottom: 5px !important;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
     .engine-tabs {
@@ -792,12 +806,28 @@ if (typeof module !== 'undefined' && module.exports) {
     .engine-canvas-wrap {
       position: relative;
       width: 100%;
-      height: 195px;
+      height: 138px !important;
       background: radial-gradient(ellipse at 50% 50%, rgba(31, 35, 52, 0.65) 0%, rgba(20, 23, 33, 0.95) 100%);
       border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 8px;
+      border-radius: 6px !important;
       overflow: hidden;
       box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08), 0 8px 24px rgba(0, 0, 0, 0.25);
+    }
+    .hero-art__bottom {
+      padding-top: 8px !important;
+      margin-top: 2px !important;
+      font-size: 7.5px !important;
+    }
+    .hero--editorial .hero-art__note {
+      right: -8px !important;
+      bottom: -4px !important;
+      padding: 7px 11px !important;
+      border-radius: 7px !important;
+    }
+    .hero--editorial .hero-art__note-mark {
+      width: 22px !important;
+      height: 22px !important;
+      font-size: 11px !important;
     }
     .engine-svg {
       width: 100%;
