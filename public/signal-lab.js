@@ -684,11 +684,20 @@ if (typeof module !== 'undefined' && module.exports) {
 
     /* --------------------------------------------------------------------------
        HERO EDITORIAL: TEXT CONTRAST SHIELD & ABSTRACT BACKGROUND ART MASKING
-       Fixes abstract background image interference behind hero typography
+       Fixes abstract background image interference behind hero typography.
+       Completely eliminates stray technical L-brackets from background SVG and DOM.
+       Aligns the hero card box cleanly with headline and page content.
        -------------------------------------------------------------------------- */
     .hero--editorial {
+      background-image:
+        url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201000%20760%22%20fill%3D%22none%22%3E%0D%0A%20%20%3Cdefs%3E%0D%0A%20%20%20%20%3ClinearGradient%20id%3D%22ribbon%22%20x1%3D%22120%22%20y1%3D%22650%22%20x2%3D%22860%22%20y2%3D%22100%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%0D%0A%20%20%20%20%20%20%3Cstop%20stop-color%3D%22%23FF684A%22%20stop-opacity%3D%22.08%22%2F%3E%0D%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22.48%22%20stop-color%3D%22%23A99AFF%22%20stop-opacity%3D%22.42%22%2F%3E%0D%0A%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23D9FF72%22%20stop-opacity%3D%22.18%22%2F%3E%0D%0A%20%20%20%20%3C%2FlinearGradient%3E%0D%0A%20%20%20%20%3CradialGradient%20id%3D%22glow%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientTransform%3D%22matrix%280%20300%20-380%200%20705%20338%29%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%0D%0A%20%20%20%20%20%20%3Cstop%20stop-color%3D%22%23635BFF%22%20stop-opacity%3D%22.38%22%2F%3E%0D%0A%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23635BFF%22%20stop-opacity%3D%220%22%2F%3E%0D%0A%20%20%20%20%3C%2FradialGradient%3E%0D%0A%20%20%20%20%3Cpattern%20id%3D%22dots%22%20width%3D%2228%22%20height%3D%2228%22%20patternUnits%3D%22userSpaceOnUse%22%3E%0D%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%222%22%20cy%3D%222%22%20r%3D%221.25%22%20fill%3D%22%23F4F0E7%22%20fill-opacity%3D%22.2%22%2F%3E%0D%0A%20%20%20%20%3C%2Fpattern%3E%0D%0A%20%20%3C%2Fdefs%3E%0D%0A%20%20%3Cellipse%20cx%3D%22695%22%20cy%3D%22370%22%20fill%3D%22url%28%23glow%29%22%20rx%3D%22380%22%20ry%3D%22300%22%2F%3E%0D%0A%20%20%3Cpath%20d%3D%22M66%20587C245%20556%20209%20344%20377%20318c163-26%20213%20177%20348%20119%20111-47%20111-212%20219-245%22%20stroke%3D%22url%28%23ribbon%29%22%20stroke-width%3D%2276%22%2F%3E%0D%0A%20%20%3Cpath%20d%3D%22M44%20585C240%20547%20207%20320%20376%20292c174-29%20215%20174%20351%20111%20116-54%20106-216%20228-246%22%20stroke%3D%22%23D9FF72%22%20stroke-opacity%3D%22.62%22%20stroke-width%3D%222%22%2F%3E%0D%0A%20%20%3Cpath%20d%3D%22M55%20624C250%20585%20235%20380%20388%20353c155-27%20204%20171%20342%20113%20105-44%20133-203%20243-223%22%20stroke%3D%22%23A99AFF%22%20stroke-opacity%3D%22.7%22%20stroke-width%3D%222%22%20stroke-dasharray%3D%224%2010%22%2F%3E%0D%0A%20%20%3Cpath%20d%3D%22M200%2084v592M424%2084v592M648%2084v592M872%2084v592M104%20180h792M104%20368h792M104%20556h792%22%20stroke%3D%22url%28%23dots%29%22%2F%3E%0D%0A%20%20%3Ccircle%20cx%3D%22376%22%20cy%3D%22292%22%20r%3D%2211%22%20fill%3D%22%23171923%22%20stroke%3D%22%23D9FF72%22%20stroke-width%3D%223%22%2F%3E%0D%0A%20%20%3Ccircle%20cx%3D%22727%22%20cy%3D%22403%22%20r%3D%228%22%20fill%3D%22%23171923%22%20stroke%3D%22%23FF684A%22%20stroke-width%3D%223%22%2F%3E%0D%0A%20%20%3Ccircle%20cx%3D%22955%22%20cy%3D%22157%22%20r%3D%2212%22%20fill%3D%22%23171923%22%20stroke%3D%22%23A99AFF%22%20stroke-width%3D%223%22%2F%3E%0D%0A%20%20%3Ccircle%20cx%3D%22376%22%20cy%3D%22292%22%20r%3D%2227%22%20stroke%3D%22%23D9FF72%22%20stroke-opacity%3D%22.25%22%2F%3E%0D%0A%20%20%3Ccircle%20cx%3D%22727%22%20cy%3D%22403%22%20r%3D%2223%22%20stroke%3D%22%23FF684A%22%20stroke-opacity%3D%22.28%22%2F%3E%0D%0A%20%20%3C%2Fsvg%3E"),
+        radial-gradient(ellipse at 86% 20%, rgb(99 91 255 / 24%), transparent 34%),
+        radial-gradient(ellipse at 8% 95%, rgb(255 104 74 / 15%), transparent 34%),
+        linear-gradient(132deg, #171923 5%, #1c202c 62%, #242638) !important;
       background-position: right -60px center, 88% 20%, 8% 95%, center !important;
       background-size: min(65%, 820px) auto, auto, auto, cover !important;
+      align-items: start !important;
+      padding-block: clamp(36px, 4.2vw, 54px) clamp(28px, 3.6vw, 44px) !important;
     }
     .hero--editorial .hero__abstract {
       mask-image: linear-gradient(to right, transparent 0%, transparent 38%, rgba(0, 0, 0, 0.35) 54%, rgba(0, 0, 0, 0.95) 75%, black 100%) !important;
@@ -696,7 +705,7 @@ if (typeof module !== 'undefined' && module.exports) {
       opacity: 0.65 !important;
       pointer-events: none !important;
     }
-    /* Clean corner framing: remove stray/duplicate outer frame lines and ticks */
+    /* Clean corner framing: completely eliminate all stray L-brackets, ticks, and frame lines */
     .hero--editorial .hero__frame-line,
     .hero--editorial .signal-tick,
     .hero--editorial .hero__abstract-cross {
@@ -709,6 +718,12 @@ if (typeof module !== 'undefined' && module.exports) {
       border-radius: 12px;
       padding-right: 12px;
     }
+    .hero--editorial .hero-visuals {
+      align-self: start !important;
+      align-items: start !important;
+      padding-top: 0 !important;
+      margin-top: 0 !important;
+    }
     @media (max-width: 1000px) {
       .hero--editorial .hero__abstract {
         mask-image: linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.5) 60%, black 100%) !important;
@@ -717,6 +732,13 @@ if (typeof module !== 'undefined' && module.exports) {
       .hero--editorial {
         background-position: center bottom, center, center, center !important;
         background-size: 100% auto, auto, auto, cover !important;
+        align-items: center !important;
+      }
+      .hero--editorial .hero-visuals {
+        align-self: center !important;
+      }
+      .hero--editorial .hero-art {
+        margin-top: 0 !important;
       }
     }
 
@@ -727,22 +749,22 @@ if (typeof module !== 'undefined' && module.exports) {
     .hero--editorial .hero-art {
       width: 100% !important;
       padding: 0 !important;
-      margin: 0 !important;
+      margin-top: clamp(26px, 3vw, 38px) !important;
     }
     .hero--editorial .hero-art__card {
-      padding: clamp(22px, 2.5vw, 30px) clamp(22px, 2.8vw, 32px) 20px !important;
+      padding: clamp(20px, 2.3vw, 28px) clamp(20px, 2.5vw, 30px) 18px !important;
       border-radius: 14px !important;
     }
     .hero--editorial .hero-art__heading {
-      margin-top: 18px !important;
-      font-size: clamp(24px, 2.8vw, 34px) !important;
+      margin-top: 14px !important;
+      font-size: clamp(23px, 2.6vw, 32px) !important;
       line-height: 1.15 !important;
     }
     .hero-intelligence-engine {
       display: flex;
       flex-direction: column;
-      gap: 10px !important;
-      margin-top: 12px !important;
+      gap: 9px !important;
+      margin-top: 10px !important;
       width: 100%;
     }
     .engine-nav-bar {
@@ -812,7 +834,7 @@ if (typeof module !== 'undefined' && module.exports) {
     .engine-canvas-wrap {
       position: relative;
       width: 100%;
-      height: 172px !important;
+      height: 156px !important;
       background: radial-gradient(ellipse at 50% 50%, rgba(31, 35, 52, 0.65) 0%, rgba(20, 23, 33, 0.95) 100%);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 8px !important;
@@ -820,20 +842,21 @@ if (typeof module !== 'undefined' && module.exports) {
       box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08), 0 8px 24px rgba(0, 0, 0, 0.25);
     }
     .hero-art__bottom {
-      padding-top: 12px !important;
-      margin-top: 6px !important;
+      padding-top: 10px !important;
+      margin-top: 4px !important;
       font-size: 8.5px !important;
     }
     .hero--editorial .hero-art__note {
-      right: -8px !important;
-      bottom: -4px !important;
-      padding: 7px 11px !important;
+      right: 0 !important;
+      bottom: -6px !important;
+      padding: 6px 10px !important;
       border-radius: 7px !important;
+      z-index: 2 !important;
     }
     .hero--editorial .hero-art__note-mark {
-      width: 22px !important;
-      height: 22px !important;
-      font-size: 11px !important;
+      width: 20px !important;
+      height: 20px !important;
+      font-size: 10px !important;
     }
     .engine-svg {
       width: 100%;
