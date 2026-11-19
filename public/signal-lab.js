@@ -209,6 +209,31 @@ if (typeof module !== 'undefined' && module.exports) {
     .signal-intro-jump:hover .signal-intro-jump__arrow {
       transform: translateY(3px);
     }
+    .signal-intro-action-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 7px;
+    }
+    .signal-intro-momentum-caption {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      font-weight: 600;
+      color: #53645a;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      white-space: nowrap;
+      padding-right: 6px;
+    }
+    @media (max-width: 768px) {
+      .signal-intro-action-col {
+        align-items: flex-start;
+      }
+      .signal-intro-momentum-caption {
+        padding-right: 0;
+      }
+    }
     .signal-intro-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -769,12 +794,10 @@ if (typeof module !== 'undefined' && module.exports) {
 
                 <circle cx="500" cy="380" r="5" fill="#fffdf6" stroke="#6e4cc7" stroke-width="2"/>
                 <circle cx="500" cy="380" r="20" stroke="#6e4cc7" stroke-opacity="0.22" stroke-width="1"/>
-                <circle cx="840" cy="140" r="6" fill="#fffdf6" stroke="#2f5945" stroke-width="2.5"/>
-                <circle cx="840" cy="140" r="26" stroke="#2f5945" stroke-opacity="0.2" stroke-width="1"/>
-                <path d="M810 115 h60 v40" stroke="#193a2f" stroke-opacity="0.14" stroke-width="1" fill="none"/>
+                <circle cx="840" cy="200" r="6" fill="#fffdf6" stroke="#2f5945" stroke-width="2.5"/>
+                <circle cx="840" cy="200" r="22" stroke="#2f5945" stroke-opacity="0.18" stroke-width="1"/>
                 <path d="M80 60 h30 v30" stroke="#193a2f" stroke-opacity="0.12" stroke-width="1" fill="none"/>
                 <path d="M1120 420 h30 v30" stroke="#193a2f" stroke-opacity="0.12" stroke-width="1" fill="none"/>
-                <text x="820" y="108" font-family="'DM Mono', monospace" font-size="9" fill="#53645a" opacity="0.65" letter-spacing="0.08em">MOMENTUM INFLECTION &middot; SPREAD &gt; 0</text>
                 <text x="470" y="420" font-family="'DM Mono', monospace" font-size="9" fill="#53645a" opacity="0.65" letter-spacing="0.08em">20D / 50D HARMONIC HARVEST</text>
               </svg>
             </div>
@@ -788,10 +811,13 @@ if (typeof module !== 'undefined' && module.exports) {
                   </div>
                   <h2 id="signal-about-title">Looking past daily noise to find <span class="serif-accent">the market's real rhythm.</span></h2>
                 </div>
-                <a class="signal-intro-jump" href="#signal-lab" id="signal-jump-btn">
-                  <span>Explore Live Market Lab</span>
-                  <span class="signal-intro-jump__arrow" aria-hidden="true">&darr;</span>
-                </a>
+                <div class="signal-intro-action-col">
+                  <a class="signal-intro-jump" href="#signal-lab" id="signal-jump-btn">
+                    <span>Explore Live Market Lab</span>
+                    <span class="signal-intro-jump__arrow" aria-hidden="true">&darr;</span>
+                  </a>
+                  <span class="signal-intro-momentum-caption">MOMENTUM INFLECTION &middot; SPREAD &gt; 0</span>
+                </div>
               </div>
 
               <div class="signal-intro-grid">
