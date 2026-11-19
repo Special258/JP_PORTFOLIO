@@ -696,10 +696,24 @@ if (typeof module !== 'undefined' && module.exports) {
       opacity: 0.65 !important;
       pointer-events: none !important;
     }
-    /* Symmetrical corner framing: eliminate redundant second bracket in top-right corner
-       so technical framing marks maintain a balanced 1:1 diagonal symmetry (1 at top-right, 1 at bottom-left) */
-    .hero--editorial .hero__frame-line {
-      display: none !important;
+    /* --------------------------------------------------------------------------
+       HERO EDITORIAL: BALANCED DUAL-CORNER FRAMING SYSTEM
+       Matches the top-right double bracket (outer + inner) by adding the companion
+       outer L-bracket at the bottom-left corner so both corners have 2 matching brackets.
+       -------------------------------------------------------------------------- */
+    .hero-frame-bracket--bl {
+      position: absolute;
+      left: -32px;
+      bottom: -22px;
+      width: 62px;
+      height: 62px;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .hero-frame-bracket--bl svg {
+      width: 100%;
+      height: 100%;
+      display: block;
     }
     .hero--editorial .hero__copy {
       position: relative !important;
@@ -2132,14 +2146,30 @@ if (typeof module !== 'undefined' && module.exports) {
     });
   }
 
+  function initHeroCornerBrackets() {
+    var heroArt = document.querySelector('.hero-art');
+    if (!heroArt || heroArt.querySelector('.hero-frame-bracket--bl')) return;
+
+    var bottomBracket = document.createElement('div');
+    bottomBracket.className = 'hero-frame-bracket hero-frame-bracket--bl';
+    bottomBracket.setAttribute('aria-hidden', 'true');
+    bottomBracket.innerHTML = '<svg viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<path d="M3 4v55h55" stroke="#F4F0E7" stroke-opacity=".36" stroke-width="2"/>' +
+    '</svg>';
+
+    heroArt.appendChild(bottomBracket);
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       initSidebarBrightnessController();
       initHeroIntelligenceEngine();
+      initHeroCornerBrackets();
     });
   } else {
     initSidebarBrightnessController();
     initHeroIntelligenceEngine();
+    initHeroCornerBrackets();
   }
 
 
