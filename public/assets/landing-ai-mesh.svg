@@ -18,7 +18,7 @@
     </pattern>
   </defs>
   <circle cx="439" cy="352" r="290" fill="url(#mesh-glow)"/>
-  <path d="M72 152h102m-102 10h61M580 576h116m-116 10h63" stroke="#F4F0E7" stroke-opacity=".38"/>
+  <path d="M72 152h102m-102 10h61M555 572h155m-155 8h80" stroke="#F4F0E7" stroke-opacity=".38"/>
   <path d="M116 88h562v526H116z" fill="url(#micro-grid)" opacity=".72"/>
   <path d="M119 448 249 350l100 60 136-204 111 99 97-111" stroke="url(#mesh-line)" stroke-opacity=".32" stroke-width="1.5"/>
   <path d="M127 471 249 373l100 61 136-204 111 99 97-111" stroke="url(#mesh-line)" stroke-width="2.5"/>
@@ -40,8 +40,7 @@
   <path d="M196 576h471" stroke="#F4F0E7" stroke-opacity=".19"/>
   <circle cx="342" cy="545" r="3" fill="#FF755F"/>
   <circle cx="472" cy="428" r="3" fill="#A99AFF"/>
-  <text x="118" y="115" fill="#C5C1D4" fill-opacity=".72" font-family="monospace" font-size="9" letter-spacing="2">NEURAL / SIGNAL MAP</text>
-  <text x="549" y="594" fill="#C5C1D4" fill-opacity=".65" font-family="monospace" font-size="8" letter-spacing="1.4">FEATURE SPACE</text>
-  <text x="399" y="374" fill="#D9FF72" font-family="monospace" font-size="9" letter-spacing="1.6">MODEL</text>
-  <path d="M98 81v24h24m576 510v-24h-24" stroke="#F4F0E7" stroke-opacity=".45"/>
+  <text x="118" y="115" fill="#C5C1D4" fill-opacity=".75" font-family="monospace" font-size="11" letter-spacing="2">NEURAL / SIGNAL MAP</text>
+  <text x="395" y="375" fill="#D9FF72" font-family="monospace" font-size="11" letter-spacing="1.6">MODEL</text>
+  <path d="M98 81v24h24m615 528v-22h-22" stroke="#F4F0E7" stroke-opacity=".45"/>
 </svg>
