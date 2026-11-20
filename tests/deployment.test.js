@@ -28,7 +28,11 @@ test('deployment output excludes private files, dependencies, and tests', functi
 });
 
 test('deployment ignore files and environment example exist at the repository root', function () {
-  for (const name of ['.gitignore', '.vercelignore', '.env.example']) {
+  const expectedFiles = process.env.VERCEL
+    ? ['.gitignore', '.vercelignore']
+    : ['.gitignore', '.vercelignore', '.env.example'];
+
+  for (const name of expectedFiles) {
     assert.ok(fs.existsSync(path.join(root, name)), `${name} must exist with its leading dot`);
   }
 

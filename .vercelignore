@@ -1,3 +1,4 @@
 .env*
+!.env.example
 Profile.pdf
 node_modules/
